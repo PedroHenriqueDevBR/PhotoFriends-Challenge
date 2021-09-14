@@ -17,20 +17,45 @@ class Person(models.Model):
         return self.user.first_name
 
     def invite(self, invitation_person):
-        invitation = Invitation(requester=self, receiver=invitation_person)
+        invitation = FriendInvitation(requester=self, receiver=invitation_person)
         invitation.save()
 
     def remove_friend(self, friend):
         self.friends.remove(friend.id)
 
+    def marriage_proposal(self, invitation_person):
+        wedding = WeddingInvitation(requester=self, receiver=invitation_person)
+        wedding.save()
 
-class Invitation(models.Model):
+    def remove_spouse(self):
+        self.spouse.spouse = None
+        self.spouse.save()
+        self.spouse = None
+        self.save()
+
+
+class FriendInvitation(models.Model):
     requester = models.ForeignKey(Person, on_delete=models.CASCADE, related_name='created_invitations')
     receiver = models.ForeignKey(Person, on_delete=models.CASCADE, related_name='received_invitations')
 
     def accept(self):
         self.receiver.friends.add(self.requester)
         self.requester.friends.add(self.receiver)
+        self.delete()
+
+    def reject(self):
+        self.delete()
+
+
+class WeddingInvitation(models.Model):
+    requester = models.ForeignKey(Person, on_delete=models.CASCADE, related_name='created_wedding')
+    receiver = models.ForeignKey(Person, on_delete=models.CASCADE, related_name='received_wedding')
+
+    def accept(self):
+        self.receiver.spouse = self.requester
+        self.requester.spouse = self.receiver
+        self.receiver.save()
+        self.requester.save()
         self.delete()
 
     def reject(self):

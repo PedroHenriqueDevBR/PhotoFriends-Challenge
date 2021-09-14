@@ -2,7 +2,7 @@ from django.test import TestCase
 from core.models import Book, Person
 from django.contrib.auth.models import User
 
-class PersonTest(TestCase):
+class PersonTestCase(TestCase):
 
     def setUp(self) -> None:
         user = User.objects.create(first_name="Tester", username="teste", password="teste")
@@ -49,6 +49,54 @@ class InvitationTestCase(TestCase):
         friends = self.person_02.friends.all()
         self.assertEquals(len(invites), 0, 'Should person_2 has 0 invite')
         self.assertEquals(len(friends), 0, 'Should person_2 has 0 friends')
+
+
+class WeddingTestCase(TestCase):
+
+    def create_person_aux(self, name, username):
+        user = User.objects.create(first_name=name, username=username, password="teste")
+        return Person.objects.create(user=user)
+
+    def setUp(self) -> None:
+        self.person_01 = self.create_person_aux('Tester 01', 'Tester 01')
+        self.person_02 = self.create_person_aux('Tester 02', 'Tester 02')
+        self.person_01.marriage_proposal(self.person_02)
+
+    def test_person_02_has_marriage_proposal(self):
+        invites = self.person_02.received_wedding.all()
+        spouse = self.person_02.spouse
+        self.assertEquals(len(invites), 1, 'Should person_2 has 1 invite to spouse')
+        self.assertEquals(spouse, None, 'Should person_2 not has spouse')
+
+    def test_accept_marriage_proposal(self):
+        invites = self.person_02.received_wedding.all()
+        invites[0].accept()
+        spouse_02 = self.person_02.spouse
+        self.assertEquals(len(invites), 0, 'Should person_2 has 0 invite')
+        self.assertNotEquals(spouse_02, None, 'Should person_2 has a spouse')
+
+    def test_reject_marriage_proposal(self):
+        invites = self.person_02.received_wedding.all()
+        invites[0].reject()
+        spouse_01 = self.person_01.spouse
+        spouse_02 = self.person_02.spouse
+        self.assertEquals(len(invites), 0, 'Should person_2 has 0 invite')
+        self.assertEquals(spouse_01, None, 'Should person_1 has no spouse')
+        self.assertEquals(spouse_02, None, 'Should person_2 has no spouse')
+
+    def test_remove_spouse(self):
+        invites = self.person_02.received_wedding.all()
+        invites[0].accept()
+        spouse_02 = self.person_02.spouse
+        self.assertEquals(len(invites), 0, 'Should person_2 has 0 invite')
+        self.assertNotEquals(spouse_02, None, 'Should person_2 has a spouse')
+        
+        person_01 = Person.objects.get(pk=1)
+        person_01.remove_spouse()
+        person_01 = Person.objects.get(pk=1)
+        person_02 = Person.objects.get(pk=2)
+        self.assertEquals(person_01.spouse, None, 'Should person_1 has no spouse')
+        self.assertEquals(person_02.spouse, None, 'Should person_2 has no spouse')
 
 
 class BookTestCase(TestCase):
