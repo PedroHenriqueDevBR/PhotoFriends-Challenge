@@ -14,10 +14,10 @@ Por favor, crie um site que atenda às suas necessidades. Você deve usar python
 
 **Detalhes da solução**
 
-• A resolução deve ser uma aplicação web responsiva.
-• Deve-se fornecer todas as informações necessárias para testar a aplicação.
-• A aplicação precisa rodar.
-• O código precisa ser hospedado em seu repositório de código preferido.
-• Você precisa hospedar a aplicação em um servidor de sua escolha e nos fornecer um link para acessar e usar o aplicativo.
-• Você deve fornecer evidências suficientes de que sua solução está completa, indicando, no mínimo, que ela funciona corretamente em relação aos requisitos.
+* A resolução deve ser uma aplicação web responsiva.
+* Deve-se fornecer todas as informações necessárias para testar a aplicação.
+* A aplicação precisa rodar.
+* O código precisa ser hospedado em seu repositório de código preferido.
+* Você precisa hospedar a aplicação em um servidor de sua escolha e nos fornecer um link para acessar e usar o aplicativo.
+* Você deve fornecer evidências suficientes de que sua solução está completa, indicando, no mínimo, que ela funciona corretamente em relação aos requisitos.
 
