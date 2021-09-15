@@ -3,10 +3,7 @@
 
 ## Endpoints
 
-1. Register user
-
-
-/v1/user/register
+1. Register user (/v1/user/register)
 
 ```json
 # Entrada
@@ -17,6 +14,23 @@
 }
 
 # Saída
-201, {}
+Status: 201
+{}
 ```
 
+2. Login with JWT (/v1/token/)
+
+```json
+# Entrada
+{
+	"username": "pedro",
+	"password": "senha123"
+}
+
+# Saída
+Status: 200
+{
+  "refresh": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9",
+  "access": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9"
+}
+```

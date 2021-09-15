@@ -1,5 +1,5 @@
 from django.test import TestCase
-from core.models import Book, Person
+from apps.core.models import Book, Person
 from django.contrib.auth.models import User
 
 class PersonTestCase(TestCase):
