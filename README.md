@@ -23,8 +23,8 @@ Por favor, crie um site que atenda às suas necessidades. Você deve usar python
 
 ## Funcionalidades
 
- - [ ] Registro de usuário
- - [ ] Autenticação de usuário
+ - [X] Registro de usuário
+ - [X] Autenticação de usuário
  - [ ] Adicionar cônjuge
  - [ ] Aceitar ou rejeitar cônjuge
  - [ ] Convidar amigo
