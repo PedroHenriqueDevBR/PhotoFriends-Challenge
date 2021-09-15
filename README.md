@@ -21,3 +21,19 @@ Por favor, crie um site que atenda às suas necessidades. Você deve usar python
 * Você precisa hospedar a aplicação em um servidor de sua escolha e nos fornecer um link para acessar e usar o aplicativo.
 * Você deve fornecer evidências suficientes de que sua solução está completa, indicando, no mínimo, que ela funciona corretamente em relação aos requisitos.
 
+## Funcionalidades
+
+ - [ ] Registro de usuário
+ - [ ] Autenticação de usuário
+ - [ ] Adicionar cônjuge
+ - [ ] Aceitar ou rejeitar cônjuge
+ - [ ] Convidar amigo
+ - [ ] Aceitar ou recusar pedido de amizade
+ - [ ] Criar Book
+ - [ ] Listar os Book do usuário e do cônjuge
+ - [ ] Adicionar imagens ao Book
+ - [ ] Listar todos os Books do amigos
+ - [ ] Acessar perfil de um amigo
+ - [ ] Acessar Book de um amigo
+ - [ ] Adicionar Imagem no Book do amigo
+ - [ ] Aceitar ou recusar imagem adicionada por um amigo (criador(ar) ou cônjuge)
