@@ -1,10 +1,11 @@
 .menu-item {
+    min-width: 250px;
     width: 100%;
     padding: 16px;
     cursor: pointer;
 }
 
 .active {
-    background: chocolate;
+    background: #F18701;
     color: cornsilk;
 }

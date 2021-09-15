@@ -12,3 +12,31 @@
 body {
     background: #EEEEEE;
 }
+
+.primary-color {
+    background: #3D348B;
+}
+
+.accent-color {
+    background: #F18701;
+}
+
+.btn-primary-color {
+    background: #76757e;
+    color: #ddd;
+    font-weight: 500;
+}
+
+.btn-primary-color:hover {
+    color: #fff;
+}
+
+.btn-accent-color {
+    background: #F18701;
+    color: #ddd;
+    font-weight: 500;
+}
+
+.btn-accent-color:hover {
+    color: #fff;
+}

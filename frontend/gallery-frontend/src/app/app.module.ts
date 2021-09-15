@@ -10,6 +10,9 @@ import { RegisterUserFormComponent } from './components/login/components/registe
 import { HeaderComponent } from './components/header/header.component';
 import { MenuComponent } from './components/menu/menu.component';
 import { MenuItemComponent } from './components/menu/menu-item/menu-item.component';
+import { TimelineComponent } from './components/home/timeline/timeline.component';
+import { BookComponent } from './components/home/book/book.component';
+import { FriendComponent } from './components/home/friend/friend.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +23,10 @@ import { MenuItemComponent } from './components/menu/menu-item/menu-item.compone
     RegisterUserFormComponent,
     HeaderComponent,
     MenuComponent,
-    MenuItemComponent
+    MenuItemComponent,
+    TimelineComponent,
+    BookComponent,
+    FriendComponent
   ],
   imports: [
     BrowserModule,
