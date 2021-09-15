@@ -1,0 +1,26 @@
+<div class="form-register" [formGroup]="formRegister">
+    <form (submit)="registerPerson()">
+        <div class="mb-3">
+            <label for="name" class="form-label">Nome</label>
+            <input type="text" class="form-control" id="name" placeholder="Nome completo" formControlName="name">
+        </div>
+        <div class="mb-3">
+            <label for="username" class="form-label">Username</label>
+            <input type="text" class="form-control" id="username" placeholder="Username" formControlName="username">
+        </div>
+        <div class="mb-3">
+            <label for="password" class="form-label">Senha</label>
+            <input type="password" class="form-control" id="password" placeholder="Senha"  formControlName="password">
+        </div>
+        <button type="submit" class="btn my-3 btn-accent-color">Registrar</button>
+    </form>
+    <button class="btn" [routerLink]="['/login']">Voltar para o login</button>
+    <div *ngIf="successMsg != ''" class="alert alert-success" role="alert">
+        {{successMsg}}
+    </div>
+    <div *ngIf="errorMsg.length != 0" class="alert alert-danger" role="alert">
+        <div *ngFor="let item of errorMsg">
+            <li>{{item}}</li>
+        </div>
+    </div>
+</div>

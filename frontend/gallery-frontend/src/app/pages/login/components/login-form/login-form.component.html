@@ -1,0 +1,21 @@
+<div class="form-login">
+    <form [formGroup]="formLogin" (ngSubmit)="onSubmit()" needs-validation>
+        <div class="mb-3">
+            <label for="username" class="form-label">Username</label>
+            <input type="text" class="form-control" id="username" placeholder="Username" formControlName="username">
+        </div>
+        <div class="mb-3">
+            <label for="password" class="form-label">Senha</label>
+            <input type="password" class="form-control" id="password" placeholder="password" formControlName="password">
+        </div>
+        <div *ngIf="formLogin.valid; then valid else invalid"></div>
+        <ng-template #valid><button type="submit" class="btn my-3 btn-accent-color">Entrar</button></ng-template>
+        <ng-template #invalid><button type="button" class="btn my-3 disable-color">Entrar</button></ng-template>
+    </form>
+    <button class="btn" [routerLink]="['/login/registrar']">Ainda não possui cadastro<br>Clique aqui para se
+        registrar</button>
+
+    <div *ngIf="errorMsg != ''" class="alert alert-danger" role="alert">
+        {{ errorMsg }}
+    </div>
+</div>

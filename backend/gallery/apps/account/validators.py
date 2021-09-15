@@ -3,22 +3,21 @@ from django.contrib.auth.models import User
 def person_register_validate_form_or_errors(data):
     errors = []
     if not "name" in data:
-        errors.append("Name is required")
+        errors.append("Nome é obrigatório")
     else:
         if len(data["name"]) < 3:
-            errors.append("Name must be at least 3 characters")
+            errors.append("Nome deve conter 3 caracteres")
     if not "username" in data:
-        errors.append("Username is required")
+        errors.append("Username é obrigatório")
     else:
         if len(data["username"]) < 5:
-            errors.append("Username must be at least 5 characters")
-        if len(User.objects.filter(username=data["username"])) > 0:
-            errors.append("Username already exists")
+            errors.append("Username deve conter 5 caracteres")
     if not "password" in data:
-        errors.append("Password is required")
+        errors.append("Password é obrigatório")
     else:
         if len(data["password"]) < 8:
-            errors.append("Password must be at least 8 characters")
+            errors.append("Password deve conter 8 caracteres")
     return errors
 
-
+def username_in_use(username):
+    return len(User.objects.filter(username=username)) > 0

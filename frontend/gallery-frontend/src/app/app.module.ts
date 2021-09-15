@@ -3,16 +3,19 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HomeComponent } from './components/home/home.component';
-import { LoginComponent } from './components/login/login.component';
-import { LoginFormComponent } from './components/login/components/login-form/login-form.component';
-import { RegisterUserFormComponent } from './components/login/components/register-user-form/register-user-form.component';
-import { HeaderComponent } from './components/header/header.component';
-import { MenuComponent } from './components/menu/menu.component';
-import { MenuItemComponent } from './components/menu/menu-item/menu-item.component';
-import { TimelineComponent } from './components/home/timeline/timeline.component';
-import { BookComponent } from './components/home/book/book.component';
-import { FriendComponent } from './components/home/friend/friend.component';
+import { HomeComponent } from './pages/home/home.component';
+import { HeaderComponent } from './shared/components/header/header.component';
+import { MenuComponent } from './shared/components/menu/menu.component';
+import { MenuItemComponent } from './shared/components/menu/menu-item/menu-item.component';
+import { BookComponent } from './pages/home/components/book/book.component';
+import { HttpClientModule } from '@angular/common/http';
+import { LoginComponent } from './pages/login/login.component';
+import { LoginFormComponent } from './pages/login/components/login-form/login-form.component';
+import { RegisterUserFormComponent } from './pages/login/components/register-user-form/register-user-form.component';
+import { TimelineComponent } from './pages/home/components/timeline/timeline.component';
+import { FriendComponent } from './pages/home/components/friend/friend.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { EndSessionItemComponent } from './shared/components/menu/end-session-item/end-session-item.component';
 
 @NgModule({
   declarations: [
@@ -26,11 +29,14 @@ import { FriendComponent } from './components/home/friend/friend.component';
     MenuItemComponent,
     TimelineComponent,
     BookComponent,
-    FriendComponent
+    FriendComponent,
+    EndSessionItemComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

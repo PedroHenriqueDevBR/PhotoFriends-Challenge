@@ -21,6 +21,14 @@ body {
     background: #F18701;
 }
 
+.disable-color {
+    background: #ccc;
+}
+
+.danger-color {
+    background: #CF4F2A;
+}
+
 .btn-primary-color {
     background: #76757e;
     color: #ddd;
@@ -39,4 +47,10 @@ body {
 
 .btn-accent-color:hover {
     color: #fff;
+}
+
+.input-error {
+    margin: 0;
+    font-size: 10pt;
+    color: #CF4F2A;
 }

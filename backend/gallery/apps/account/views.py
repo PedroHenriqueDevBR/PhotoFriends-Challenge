@@ -3,7 +3,7 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 from django.contrib.auth.models import User
 from apps.core.models import Person
-from .validators import person_register_validate_form_or_errors
+from .validators import person_register_validate_form_or_errors, username_in_use
 
 class PersonRegisterView(APIView):
     name = "person-register-view"
@@ -22,6 +22,10 @@ class PersonRegisterView(APIView):
         if len(form_errors) > 0:
             return Response(
                 {"errors": form_errors}, status=status.HTTP_406_NOT_ACCEPTABLE
+            )
+        if (username_in_use(data["username"])):
+            return Response(
+                {"errors": form_errors}, status=status.HTTP_409_CONFLICT
             )
         self.create_user(data)
         return Response(status=status.HTTP_201_CREATED)
