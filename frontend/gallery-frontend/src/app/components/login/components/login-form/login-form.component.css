@@ -1,0 +1,14 @@
+.form-login {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-login > * {
+    width: 100%;
+}
+
+.btn {
+    width: 100%;
+}

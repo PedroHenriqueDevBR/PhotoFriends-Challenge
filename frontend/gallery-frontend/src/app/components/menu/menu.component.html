@@ -1,0 +1,9 @@
+<div class="menu">
+    <div class="options">
+        <h4 class="m-3">Opções</h4>
+        <app-menu-item text="Home" [selected]="currentPage == 0" (click)="changePage(0)"></app-menu-item>
+        <app-menu-item text="Meus Books" [selected]="currentPage == 1" (click)="changePage(1)"></app-menu-item>
+        <app-menu-item text="Meus amigos" [selected]="currentPage == 2" (click)="changePage(2)"></app-menu-item>
+    </div>
+    <app-menu-item></app-menu-item>
+</div>

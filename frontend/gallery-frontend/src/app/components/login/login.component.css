@@ -1,0 +1,22 @@
+main {
+    background: #fff;
+    display: flex;
+}
+
+.aside {
+    width: 70vw;
+    height: 100vh;
+    background: url('https://images.pexels.com/photos/3044565/pexels-photo-3044565.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940');
+    background-size: cover;
+    background-position: center;
+}
+
+.forms-container {
+    width: 30vw;
+    height: 100vh;
+    padding: 18px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
