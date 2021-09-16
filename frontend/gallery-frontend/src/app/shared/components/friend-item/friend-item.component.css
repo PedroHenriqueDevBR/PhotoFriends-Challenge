@@ -5,6 +5,10 @@ main {
     cursor: pointer;
 }
 
+main:hover {
+    background: #eee;
+}
+
 .avatar {
     margin-right: 16px;
 }
@@ -12,4 +16,14 @@ main {
 main p {
     margin: auto 0;
     font-weight: 500;
+}
+
+.selected {
+    background: #F18701;
+    color: white;
+}
+
+.selected:hover {
+    background: #F18701;
+    color: white;
 }

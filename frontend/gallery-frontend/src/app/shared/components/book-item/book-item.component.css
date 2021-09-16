@@ -1,0 +1,18 @@
+.book {
+    height: fit-content;
+    border-radius: 8px;
+    display: flex;
+    cursor: pointer;
+}
+
+.book:hover {
+    background: #ddd;
+}
+
+.image-data {
+    border-radius: 8px;
+}
+
+.hide {
+    display: none;
+}

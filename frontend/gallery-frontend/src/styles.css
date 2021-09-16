@@ -55,6 +55,9 @@ body {
     color: #CF4F2A;
 }
 
+.hide {
+    display: none;
+}
 
 /* Fonts */
 

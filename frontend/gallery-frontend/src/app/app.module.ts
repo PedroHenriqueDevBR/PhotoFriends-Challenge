@@ -17,6 +17,8 @@ import { FriendComponent } from './pages/home/components/friend/friend.component
 import { ReactiveFormsModule } from '@angular/forms';
 import { EndSessionItemComponent } from './shared/components/menu/end-session-item/end-session-item.component';
 import { FriendItemComponent } from './shared/components/friend-item/friend-item.component';
+import { BookItemComponent } from './shared/components/book-item/book-item.component';
+import { GalleryComponent } from './shared/components/gallery/gallery.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,9 @@ import { FriendItemComponent } from './shared/components/friend-item/friend-item
     BookComponent,
     FriendComponent,
     EndSessionItemComponent,
-    FriendItemComponent
+    FriendItemComponent,
+    BookItemComponent,
+    GalleryComponent
   ],
   imports: [
     BrowserModule,

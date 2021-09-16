@@ -1,0 +1,9 @@
+<div class="gallery" [ngClass]="{'hide': hide}">
+    <div class="gallery-header mt-4">
+        <h1 class="title">Galeria</h1>
+        <button class="btn btn-accent-color">Adicionar</button>
+    </div>
+    <div class="images mt-3">
+        <div *ngFor="let item of images" class="image-data" style="background: url({{item}}); background-size: cover; width: 200px; height: 200px;"></div>
+    </div>
+</div>

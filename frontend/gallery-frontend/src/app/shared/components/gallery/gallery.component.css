@@ -1,0 +1,20 @@
+.info-name, .gallery-header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.gallery .images {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.gallery .images .image-data {
+    margin: 5px;
+    border-radius: 8px;
+}
+
+.hide {
+    display: none;
+}

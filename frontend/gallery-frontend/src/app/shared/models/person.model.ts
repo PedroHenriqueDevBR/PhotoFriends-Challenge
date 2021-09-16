@@ -1,10 +1,14 @@
+import { BookModel } from "./book-model";
+
 export class PersonModel {
+    id?: number;
     name: String = '';
     username: String = '';
     password: String = '';
     image: String = '';
     friends: PersonModel[] = [];
-    spouse?: PersonModel;
+    spouse?: string;
+    books: BookModel[] = [];
 
     public setLogin(
         username: String,

@@ -1,7 +1,31 @@
 <main>
-    <div class="friend-list">
-        <div *ngFor="let item of friends">
-            <app-friend-item [name]=item.name [image]=item.image></app-friend-item>
+    <div class="friend-container">
+        <div class="container py-3">
+            <h1 class="title">Meus amigos</h1>
+        </div>
+        <div class="friend-list">
+            <div *ngFor="let item of friends" (click)="selectFriend(item)">
+                <app-friend-item [name]=item.name [image]=item.image [selected]="selectedFriend.id == item.id"></app-friend-item>
+            </div>
+        </div>
+    </div>
+    <div class="friend-information">
+        <div class="header py-4 primary-color">
+            <div class="avatar" style="background: url({{selectedFriend.image}}); width: 200px; height: 200px; border-radius: 50%; background-size: cover;"></div>
+        </div>
+
+        <div class="info p-3">
+            <div class="info-name">
+                <h1 class="title">{{selectedFriend.name}}</h1>
+                <button class="btn btn-accent-color" [ngClass]="{'hide': selectedFriend.spouse != null}">Adicionar cônjugue</button>
+            </div>
+            <hr>
+
+            <div class="books">
+                <app-book-item *ngFor="let item of selectedFriend.books" [book]="item" [hide]="selectedBook.id != null && selectedBook.id != item.id" (click)="selectBook(item)"></app-book-item>
+            </div>
+
+            <app-gallery [images]="selectedBook.images" [hide]="selectedBook.id == null"></app-gallery>
         </div>
     </div>
 </main>

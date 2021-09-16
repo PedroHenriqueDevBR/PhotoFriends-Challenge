@@ -12,6 +12,9 @@ export class FriendItemComponent implements OnInit {
   @Input()
   image: String = '';
 
+  @Input()
+  selected: boolean = false;
+
   constructor() { }
 
   ngOnInit(): void {
