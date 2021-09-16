@@ -1,0 +1,15 @@
+main {
+    display: flex;
+    align-items: center;
+    padding: 8px;
+    cursor: pointer;
+}
+
+.avatar {
+    margin-right: 16px;
+}
+
+main p {
+    margin: auto 0;
+    font-weight: 500;
+}

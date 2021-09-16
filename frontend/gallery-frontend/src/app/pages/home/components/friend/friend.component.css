@@ -4,3 +4,10 @@ main {
     background: #FFFFFF;
     border-radius: 8px;
 }
+
+.friend-list {
+    height: 83vh;
+    min-width: 250px;
+    width: fit-content;
+    overflow-y: auto;
+}

@@ -1,3 +1,7 @@
 <main>
-    <h1>Friends</h1>
+    <div class="friend-list">
+        <div *ngFor="let item of friends">
+            <app-friend-item [name]=item.name [image]=item.image></app-friend-item>
+        </div>
+    </div>
 </main>

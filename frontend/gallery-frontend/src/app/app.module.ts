@@ -16,6 +16,7 @@ import { TimelineComponent } from './pages/home/components/timeline/timeline.com
 import { FriendComponent } from './pages/home/components/friend/friend.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { EndSessionItemComponent } from './shared/components/menu/end-session-item/end-session-item.component';
+import { FriendItemComponent } from './shared/components/friend-item/friend-item.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { EndSessionItemComponent } from './shared/components/menu/end-session-it
     TimelineComponent,
     BookComponent,
     FriendComponent,
-    EndSessionItemComponent
+    EndSessionItemComponent,
+    FriendItemComponent
   ],
   imports: [
     BrowserModule,
