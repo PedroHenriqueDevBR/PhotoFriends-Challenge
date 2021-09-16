@@ -38,7 +38,6 @@ export class FriendComponent implements OnInit {
   }
 
   getBooks(friend: PersonModel): void {
-    console.log('Buscando os books do usuário logado');
     if (friend.books.length == 0) {
       let books = [];
       for (let i: number = 0; i < friend.id!; i++) {

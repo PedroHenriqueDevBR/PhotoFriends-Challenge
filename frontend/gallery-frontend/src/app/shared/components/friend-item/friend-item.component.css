@@ -1,8 +1,10 @@
 main {
     display: flex;
+    justify-content: space-between;
     align-items: center;
     padding: 8px;
     cursor: pointer;
+    border-top: 1px solid #eee;
 }
 
 main:hover {
@@ -18,6 +20,10 @@ main p {
     font-weight: 500;
 }
 
+.striped {
+    background: #ddd;
+}
+
 .selected {
     background: #F18701;
     color: white;
@@ -26,4 +32,23 @@ main p {
 .selected:hover {
     background: #F18701;
     color: white;
+}
+
+.info {
+    display: flex;
+    align-items: center;
+    padding: 8px;
+}
+
+.options {
+    display: flex;
+}
+
+.options .btn {
+    margin-left: 4px;
+    font-size: .6rem;
+}
+
+.hide {
+    display: none;
 }

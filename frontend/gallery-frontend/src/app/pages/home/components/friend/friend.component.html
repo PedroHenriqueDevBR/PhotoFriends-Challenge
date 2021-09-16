@@ -10,17 +10,16 @@
         </div>
     </div>
     <div class="friend-information">
-        <div class="header py-4 primary-color">
-            <div class="avatar" style="background: url({{selectedFriend.image}}); width: 200px; height: 200px; border-radius: 50%; background-size: cover;"></div>
+        <div class="header py-4 primary-color" [ngClass]="{'hide': selectedBook.id != null || selectedFriend.id == null}">
+            <div class="avatar" style="background-size: contain; background-image: url({{selectedFriend.image}}); width: 200px; height: 200px; border-radius: 50%;"></div>
         </div>
 
         <div class="info p-3">
             <div class="info-name">
-                <h1 class="title">{{selectedFriend.name}}</h1>
-                <button class="btn btn-accent-color" [ngClass]="{'hide': selectedFriend.spouse != null}">Adicionar cônjugue</button>
+                <h1 class="title" [ngClass]="{'hide': selectedBook.id != null || selectedFriend.id == null}">{{selectedFriend.name}}</h1>
+                <button class="btn btn-accent-color" [ngClass]="{'hide': selectedBook.id != null || selectedFriend.id == null}">Adicionar cônjugue</button>
             </div>
-            <hr>
-
+            
             <div class="books">
                 <app-book-item *ngFor="let item of selectedFriend.books" [book]="item" [hide]="selectedBook.id != null && selectedBook.id != item.id" (click)="selectBook(item)"></app-book-item>
             </div>

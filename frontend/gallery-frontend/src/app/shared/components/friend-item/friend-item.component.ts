@@ -15,6 +15,9 @@ export class FriendItemComponent implements OnInit {
   @Input()
   selected: boolean = false;
 
+  @Input()
+  showOptions: boolean = false;
+
   constructor() { }
 
   ngOnInit(): void {
