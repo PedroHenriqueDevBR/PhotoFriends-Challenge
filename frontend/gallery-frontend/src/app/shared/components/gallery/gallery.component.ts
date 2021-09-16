@@ -13,9 +13,19 @@ export class GalleryComponent implements OnInit {
   @Input()
   hide: boolean = true;
 
+  selectedImage: string = '';
+
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  selectImage(image: string): void {
+    this.selectedImage = image;
+  }
+
+  removeSelectedImage(): void {
+    this.selectedImage = '';
   }
 
 }

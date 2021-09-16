@@ -4,6 +4,12 @@
         <button class="btn btn-accent-color">Adicionar</button>
     </div>
     <div class="images mt-3">
-        <div *ngFor="let item of images" class="image-data" style="background: url({{item}}); background-size: cover; width: 200px; height: 200px;"></div>
+        <div *ngFor="let item of images" class="image-data"
+            (click)="selectImage(item)"
+            style="background: url({{item}}); background-size: cover; width: 200px; height: 200px;"></div>
     </div>
+</div>
+
+<div class="hide p-5" [ngClass]="{'image-show': selectedImage != ''}" (click)="removeSelectedImage()">
+    <img src="{{selectedImage}}" alt="Image">
 </div>
