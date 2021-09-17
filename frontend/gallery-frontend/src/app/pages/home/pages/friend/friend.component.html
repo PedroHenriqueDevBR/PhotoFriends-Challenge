@@ -1,0 +1,44 @@
+<main>
+    <div class="friend-information">
+        <div class="header py-4 primary-color"
+            [ngClass]="{'hide': selectedBook.id != null || selectedFriend.id == null}">
+            <div class="avatar"
+                style="background-size: contain; background-image: url({{selectedFriend.image}}); width: 200px; height: 200px; border-radius: 50%;">
+            </div>
+        </div>
+
+        <div class="info p-3">
+            <div class="info-name">
+                <h1 class="title" [ngClass]="{'hide': selectedBook.id != null || selectedFriend.id == null}">
+                    {{selectedFriend.name}}</h1>
+                <button class="btn btn-accent-color"
+                    [ngClass]="{'hide': selectedBook.id != null || selectedFriend.id == null}">Adicionar
+                    cônjugue</button>
+            </div>
+
+            <div class="books">
+                <app-book-item *ngFor="let item of selectedFriend.books" [book]="item"
+                    [hide]="selectedBook.id != null && selectedBook.id != item.id" (click)="selectBook(item)">
+                </app-book-item>
+            </div>
+
+            <app-gallery [images]="selectedBook.images" [hide]="selectedBook.id == null"></app-gallery>
+        </div>
+    </div>
+    <div class="friend-container">
+        <div class="header container py-3">
+            <h1 class="title">Meus amigos</h1>
+                <button class="btn btn-primary-color mx-3" (click)="openFriendFormModal()">
+                    <i class="fas fa-plus"></i>
+                </button>
+        </div>
+        <div class="friend-list">
+            <div *ngFor="let item of friends" (click)="selectFriend(item)">
+                <app-friend-item [name]=item.name [image]=item.image [selected]="selectedFriend.id == item.id">
+                </app-friend-item>
+            </div>
+        </div>
+    </div>
+</main>
+
+<app-add-friend-form [hide]="hideFriendFormModal" (emitClose)="closeFriendFormModal()"></app-add-friend-form>

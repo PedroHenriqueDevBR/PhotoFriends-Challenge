@@ -11,6 +11,7 @@ export class FriendComponent implements OnInit {
   friends: PersonModel[] = [];
   selectedFriend: PersonModel = new PersonModel();
   selectedBook: BookModel = new BookModel();
+  hideFriendFormModal: boolean = true;
 
   constructor() { }
 
@@ -66,7 +67,15 @@ export class FriendComponent implements OnInit {
       return;
     }
     this.selectedBook = book;
-
   }
+
+  openFriendFormModal(): void {
+    this.hideFriendFormModal = false;
+  }
+
+  closeFriendFormModal(): void {
+    this.hideFriendFormModal = true;
+  }
+
 
 }

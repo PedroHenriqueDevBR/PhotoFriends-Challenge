@@ -12,6 +12,12 @@ main {
     width: fit-content;
 }
 
+.friend-container .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
 .friend-list {
     height: calc(100% - 55px);
     min-width: 350px;

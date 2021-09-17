@@ -1,13 +1,12 @@
 main {
     width: 100%;
     height: 100%;
-    background: #FFFFFF;
     border-radius: 8px;
     display: flex;
 }
 
 .timeline-list {
-    height: calc(100% - 55px);
+    height: 100%;
     overflow-y: auto;
 }
 
@@ -24,6 +23,9 @@ main {
     width: 35%;
     height: 100%;
     overflow-y: auto;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 5px 5px 15px #9e9e9e;
 }
 
 .header {
