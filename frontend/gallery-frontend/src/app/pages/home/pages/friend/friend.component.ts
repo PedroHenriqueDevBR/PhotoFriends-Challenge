@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BookModel } from 'src/app/shared/models/book-model';
 import { PersonModel } from 'src/app/shared/models/person.model';
+import { FriendService } from 'src/app/shared/services/friend.service';
 
 @Component({
   selector: 'app-friend',
@@ -13,23 +14,29 @@ export class FriendComponent implements OnInit {
   selectedBook: BookModel = new BookModel();
   hideFriendFormModal: boolean = true;
 
-  constructor() { }
+  constructor(private friendService: FriendService) { }
 
   ngOnInit(): void {
     this.getFriends();
   }
 
   getFriends(): void {
-    for (let i: number = 0; i < 20; i++) {
-      let person: PersonModel = new PersonModel();
-      if (i % 2 == 0) {
-        person.spouse = 'Pessoa';
+    this.friendService.getMyFriends().subscribe(
+      data => {
+        for (var item of data as Array<any>) {
+          let person = new PersonModel();
+          person.id = item.id;
+          person.name = item.name;
+          person.username = item.user.username;
+          person.image = item.user.image;
+          person.spouse = undefined;
+          this.friends.push(person);
+        }
+      },
+      error => {
+        console.log(error);
       }
-      person.id = i + 1;
-      person.name = `Fulano ${i + 1}`
-      person.image = 'https://images.pexels.com/photos/3565370/pexels-photo-3565370.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940';
-      this.friends.push(person);
-    }
+    );
   }
 
   selectFriend(person: PersonModel): void {

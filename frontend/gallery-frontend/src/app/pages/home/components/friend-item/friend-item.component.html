@@ -4,7 +4,7 @@
         <p>{{ name }}</p>
     </div>
     <div class="options" [ngClass]="{'hide': !showOptions}">
-        <button class="btn btn-success"><i class="fas fa-check"></i></button>
-        <button class="btn btn-danger"><i class="fas fa-times"></i></button>
+        <button class="btn btn-success"><i class="fas fa-check" (click)="acceptEmit()"></i></button>
+        <button class="btn btn-danger"><i class="fas fa-times" (click)="rejectEmit()"></i></button>
     </div>
 </main>

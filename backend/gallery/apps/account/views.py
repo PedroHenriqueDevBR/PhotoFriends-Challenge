@@ -1,11 +1,9 @@
-from apps.account.serializers.person_serializers import PersonSerializer
 from apps.account.validators.friend_validators import friend_invitation_is_valid_or_errors
 from apps.account.serializers.friend_seralizer import FriendInviteSerializer, FriendSerializer
 from apps.account.validators.person_validators import person_register_is_valid_or_errors, username_in_use
 from apps.account.validators.spouse_validators import wedding_invitation_is_valid_or_errors
 from apps.account.serializers.spouse_seralizer import SpouseInviteSerializer
-from django.dispatch.dispatcher import receiver
-from rest_framework import serializers, status
+from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework.permissions import IsAuthenticated
@@ -127,10 +125,10 @@ class FriendCreateAndList(APIView):
 
     def post(self, request):
         data = request.data
-        form_errors = friend_invitation_is_valid_or_errors(data, request.user.person.id)
+        form_errors = friend_invitation_is_valid_or_errors(data, request.user.person)
         if len(form_errors) > 0:
             return Response({"errors": form_errors}, status=status.HTTP_406_NOT_ACCEPTABLE)
-        receiver = Person.objects.get(id=data['target_id'])
+        receiver = User.objects.get(username=data['username']).person
         invite = FriendInvitation(requester=request.user.person, receiver=receiver)
         invite.save()
         return Response(status=status.HTTP_201_CREATED)

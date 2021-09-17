@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-friend-item',
@@ -18,9 +18,23 @@ export class FriendItemComponent implements OnInit {
   @Input()
   showOptions: boolean = false;
 
+  @Output()
+  accept = new EventEmitter();
+
+  @Output()
+  reject = new EventEmitter();
+
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  acceptEmit(): void {
+    this.accept.emit();
+  }
+
+  rejectEmit(): void {
+    this.reject.emit();
   }
 
 }

@@ -1,24 +1,25 @@
-from apps.core.models import FriendInvitation, Person, WeddingInvitation
+from apps.core.models import FriendInvitation
+from django.contrib.auth.models import User
 
-def friend_invitation_is_valid_or_errors(data, logged_person_id):
+def friend_invitation_is_valid_or_errors(data, requester):
     errors = []
-    if not "target_id" in data:
-        errors.append("O 'target_id' do(a) amigo(a) é necessário")
+    if not "username" in data:
+        errors.append("O 'username' do(a) amigo(a) é necessário")
     else:
-        if data['target_id'] == logged_person_id:
+        if data['username'] == requester.user.username:
             errors.append("Você não pode enviar o convite para sí mesmo")
         else:
             try:
-                requester = Person.objects.get(id=logged_person_id)
-                receiver = Person.objects.get(id=data['target_id'])
+                receiver = User.objects.get(username=data['username']).person
                 if friend_invite_already_registered(requester, receiver):
                     errors.append("Pedido de amizade já registrado")
             except:
-                errors.append("ID não encontrado no banco de dados")
+                errors.append("username não encontrado no banco de dados")
     return errors
 
 def friend_invite_already_registered(logged_person, receiver_person):
     invitations = FriendInvitation.objects.filter(requester=logged_person, receiver=receiver_person)
-    if len(invitations) == 0:
-        return False
-    return True
+    friends_found = logged_person.friends.filter(id=receiver_person.id)
+    if len(invitations) > 0 or len(friends_found) > 0:
+        return True
+    return False

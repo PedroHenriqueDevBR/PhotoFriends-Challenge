@@ -14,6 +14,6 @@ class PersonSerializer(ModelSerializer):
     user = UserSerializer(many=False, read_only=True)
     class Meta:
         model = Person
-        fields = ['id', 'image', 'user']
+        fields = ['id', 'image', 'name', 'user']
 
 

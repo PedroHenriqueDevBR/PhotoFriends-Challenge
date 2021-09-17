@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { BookModel } from 'src/app/shared/models/book-model';
+import { InvitationModel } from 'src/app/shared/models/invitation-model';
 import { PersonModel } from 'src/app/shared/models/person.model';
+import { FriendService } from 'src/app/shared/services/friend.service';
 
 @Component({
   selector: 'app-timeline',
@@ -11,9 +13,9 @@ export class TimelineComponent implements OnInit {
 
   books: BookModel[] = [];
   spouseRequests: PersonModel[] = [];
-  friendRequests: PersonModel[] = [];
+  friendRequests: InvitationModel[] = [];
 
-  constructor() { }
+  constructor(private friendService: FriendService) { }
 
   ngOnInit(): void {
     this.getLastBooks();
@@ -52,16 +54,38 @@ export class TimelineComponent implements OnInit {
   }
 
   getFriendRequests(): void {
-    for (let i: number = 0; i < 6; i++) {
-      let person: PersonModel = new PersonModel();
-      if (i % 2 == 0) {
-        person.spouse = 'Pessoa';
+    this.friendService.getMyFriendInvitations().subscribe(
+      data => {
+        for (var item of data as Array<any>) {
+          const requester = item.requester;
+          let person = new PersonModel();
+          person.id = requester.id;
+          person.name = requester.name;
+          person.username = requester.user.username;
+          person.image = requester.user.image;
+          const invitation: InvitationModel = new InvitationModel(item.id, person);
+          this.friendRequests.push(invitation);
+        }
+      },
+      error => {
+        console.log(error);
       }
-      person.id = i + 1;
-      person.name = `Fulano ${i + 1}`
-      person.image = 'https://images.pexels.com/photos/3565370/pexels-photo-3565370.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940';
-      this.friendRequests.push(person);
-    }
+    );
+  }
+
+  acceptInvitation(id: number): void {
+    console.log(id);
+  }
+
+  rejectInvitation(id: number): void {
+    this.friendService.rejectInvitation(id).subscribe(
+      data => {
+        this.getFriendRequests();
+      },
+      error => {
+        console.log(error);
+      }
+    )
   }
 
 }
