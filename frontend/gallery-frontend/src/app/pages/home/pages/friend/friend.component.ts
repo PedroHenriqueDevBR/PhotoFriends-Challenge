@@ -29,7 +29,7 @@ export class FriendComponent implements OnInit {
           person.name = item.name;
           person.username = item.user.username;
           person.image = item.user.image;
-          person.spouse = undefined;
+          person.spouse = item.spouse;
           this.friends.push(person);
         }
       },

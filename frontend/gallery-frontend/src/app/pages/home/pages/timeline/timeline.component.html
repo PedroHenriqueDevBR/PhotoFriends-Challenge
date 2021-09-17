@@ -9,11 +9,16 @@
         </div>
     </div>
     <div class="timeline-information py-1">
-        <h1 class="title p-3">Cônjuges</h1>
-        <app-friend-item *ngFor="let item of spouseRequests" [name]=item.name [image]=item.image [showOptions]=true></app-friend-item>
+        <div class="container" [ngClass]="{'hide': spouseRequests.length == 0}">
+            <h5 class="p-3">Cônjuges (Solicitações)</h5>
+            <app-friend-item *ngFor="let item of spouseRequests" [name]=item.person.name [image]=item.person.image [showOptions]=true (response)="responseSpouseInvitation(item.id, $event)"></app-friend-item>
+        </div>
 
-        <h1 class="title p-3">Pedidos de amizade</h1>
-        <app-friend-item *ngFor="let item of friendRequests" [name]=item.person.name [image]=item.person.image [showOptions]=true (response)="responseInvitation(item.id, $event)"></app-friend-item>
+        <div class="container">
+            <h5 class="p-3">Pedidos de amizade</h5>
+            <p class="p-3">Nenhum pedido de amizade recebido</p>
+            <app-friend-item *ngFor="let item of friendRequests" [name]=item.person.name [image]=item.person.image [showOptions]=true (response)="responseFriendInvitation(item.id, $event)"></app-friend-item>
+        </div>
     </div>
 
 </main>

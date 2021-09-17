@@ -3,6 +3,7 @@ import { BookModel } from 'src/app/shared/models/book-model';
 import { InvitationModel } from 'src/app/shared/models/invitation-model';
 import { PersonModel } from 'src/app/shared/models/person.model';
 import { FriendService } from 'src/app/shared/services/friend.service';
+import { SpouseService } from 'src/app/shared/services/spouse.service';
 
 @Component({
   selector: 'app-timeline',
@@ -12,10 +13,13 @@ import { FriendService } from 'src/app/shared/services/friend.service';
 export class TimelineComponent implements OnInit {
 
   books: BookModel[] = [];
-  spouseRequests: PersonModel[] = [];
+  spouseRequests: InvitationModel[] = [];
   friendRequests: InvitationModel[] = [];
 
-  constructor(private friendService: FriendService) { }
+  constructor(
+    private friendService: FriendService,
+    private spouseService: SpouseService,
+  ) { }
 
   ngOnInit(): void {
     this.getLastBooks();
@@ -41,16 +45,24 @@ export class TimelineComponent implements OnInit {
   }
 
   getSpouseRequests(): void {
-    for (let i: number = 0; i < 3; i++) {
-      let person: PersonModel = new PersonModel();
-      if (i % 2 == 0) {
-        person.spouse = 'Pessoa';
+    this.spouseService.getMySpouseInvitations().subscribe(
+      data => {
+        console.log(data);
+        for (var item of data as Array<any>) {
+          const requester = item.requester;
+          let person = new PersonModel();
+          person.id = requester.id;
+          person.name = requester.name;
+          person.username = requester.user.username;
+          person.image = requester.user.image;
+          const invitation: InvitationModel = new InvitationModel(item.id, person);
+          this.spouseRequests.push(invitation);
+        }
+      },
+      error => {
+        console.log(error);
       }
-      person.id = i + 1;
-      person.name = `Fulano ${i + 1}`
-      person.image = 'https://images.pexels.com/photos/3565370/pexels-photo-3565370.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940';
-      this.spouseRequests.push(person);
-    }
+    );
   }
 
   getFriendRequests(): void {
@@ -73,15 +85,15 @@ export class TimelineComponent implements OnInit {
     );
   }
 
-  responseInvitation(id: number, accept: boolean): void {
+  responseFriendInvitation(id: number, accept: boolean): void {
     if (accept == true) {
-      this.acceptInvitation(id);
+      this.acceptFriendInvitation(id);
     } else {
-      this.rejectInvitation(id);
+      this.rejectFriendInvitation(id);
     }
   }
 
-  acceptInvitation(id: number): void {
+  acceptFriendInvitation(id: number): void {
     this.friendService.acceptInvitation(id).subscribe(
       data => {
         this.removeFriendInvitation(id);
@@ -92,7 +104,7 @@ export class TimelineComponent implements OnInit {
     )
   }
 
-  rejectInvitation(id: number): void {
+  rejectFriendInvitation(id: number): void {
     this.friendService.rejectInvitation(id).subscribe(
       data => {
         this.removeFriendInvitation(id);
@@ -107,6 +119,43 @@ export class TimelineComponent implements OnInit {
     const index = this.friendRequests.findIndex(el => el.id == id);
     if (index > -1) {
       this.friendRequests.splice(index, 1);
+    }
+  }
+
+  responseSpouseInvitation(id: number, accept: boolean): void {
+    if (accept == true) {
+      this.acceptSpouseInvitation(id);
+    } else {
+      this.rejectSpouseInvitation(id);
+    }
+  }
+
+  acceptSpouseInvitation(id: number): void {
+    this.spouseService.acceptInvitation(id).subscribe(
+      data => {
+        this.removeSpouseInvitation(id);
+      },
+      error => {
+        console.log(error);
+      }
+    )
+  }
+
+  rejectSpouseInvitation(id: number): void {
+    this.spouseService.rejectInvitation(id).subscribe(
+      data => {
+        this.removeSpouseInvitation(id);
+      },
+      error => {
+        console.log(error);
+      }
+    )
+  }
+
+  removeSpouseInvitation(id: number): void {
+    const index = this.spouseRequests.findIndex(el => el.id == id);
+    if (index > -1) {
+      this.spouseRequests.splice(index, 1);
     }
   }
 

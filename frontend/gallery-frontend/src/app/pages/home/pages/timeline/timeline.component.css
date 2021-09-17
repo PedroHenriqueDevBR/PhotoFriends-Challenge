@@ -23,9 +23,13 @@ main {
     width: 35%;
     height: 100%;
     overflow-y: auto;
+    padding: 8px;
+}
+
+.timeline-information .container {
     background: #fff;
     border-radius: 8px;
-    box-shadow: 5px 5px 15px #9e9e9e;
+    box-shadow: 5px 5px 5px #9e9e9e;
 }
 
 .header {

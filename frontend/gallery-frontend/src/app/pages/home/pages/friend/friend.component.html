@@ -12,11 +12,14 @@
                 <h1 class="title" [ngClass]="{'hide': selectedBook.id != null || selectedFriend.id == null}">
                     {{selectedFriend.name}}</h1>
                 <button class="btn btn-accent-color"
-                    [ngClass]="{'hide': selectedBook.id != null || selectedFriend.id == null}">Adicionar
+                    [ngClass]="{'hide': selectedBook.id != null || selectedFriend.id == null || selectedFriend.spouse != undefined}">Adicionar
                     cônjugue</button>
             </div>
 
             <div class="books">
+                <div class="no-content" [ngClass]="{'hide': selectedFriend.id != null}">
+                    <h5>Nenhum amigo selecionado <br>selecione um amigo do lado direito da página para mais detalhes</h5>
+                </div>
                 <app-book-item *ngFor="let item of selectedFriend.books" [book]="item"
                     [hide]="selectedBook.id != null && selectedBook.id != item.id" (click)="selectBook(item)">
                 </app-book-item>
