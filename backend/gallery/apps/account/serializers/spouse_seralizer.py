@@ -1,13 +1,6 @@
-from django.contrib.auth.models import User
+from apps.core.models import Person, WeddingInvitation
+from apps.account.serializers.person_serializers import PersonSerializer, UserSerializer
 from rest_framework.serializers import ModelSerializer
-from apps.core.models import Person, FriendInvitation, WeddingInvitation
-from django.contrib.auth.models import User
-
-
-class UserSerializer(ModelSerializer):
-    class Meta:
-        model = User
-        fields = ['id', 'first_name', 'username']
 
 
 class SpouseSerializer(ModelSerializer):
@@ -15,13 +8,6 @@ class SpouseSerializer(ModelSerializer):
     class Meta:
         model = Person
         fields = ['id', 'image', 'name']
-
-
-class PersonSerializer(ModelSerializer):
-    user = UserSerializer(many=False, read_only=True)
-    class Meta:
-        model = Person
-        fields = ['id', 'image', 'user']
 
 
 class SpouseInviteSerializer(ModelSerializer):

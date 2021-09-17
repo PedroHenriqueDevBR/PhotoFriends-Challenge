@@ -75,3 +75,22 @@ body {
     font-size: 1.4rem;
     line-height: 16px;
 }
+
+/* Scrollbar */
+
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #888;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #3D348B;
+    width: 10px;
+}
