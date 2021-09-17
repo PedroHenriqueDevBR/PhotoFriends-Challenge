@@ -13,7 +13,7 @@
         <app-friend-item *ngFor="let item of spouseRequests" [name]=item.name [image]=item.image [showOptions]=true></app-friend-item>
 
         <h1 class="title p-3">Pedidos de amizade</h1>
-        <app-friend-item *ngFor="let item of friendRequests" [name]=item.person.name [image]=item.person.image [showOptions]=true (accept)="acceptInvitation(item.id)" (reject)="rejectInvitation(item.id)"></app-friend-item>
+        <app-friend-item *ngFor="let item of friendRequests" [name]=item.person.name [image]=item.person.image [showOptions]=true (response)="responseInvitation(item.id, $event)"></app-friend-item>
     </div>
 
 </main>

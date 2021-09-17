@@ -19,10 +19,7 @@ export class FriendItemComponent implements OnInit {
   showOptions: boolean = false;
 
   @Output()
-  accept = new EventEmitter();
-
-  @Output()
-  reject = new EventEmitter();
+  response = new EventEmitter();
 
   constructor() { }
 
@@ -30,11 +27,11 @@ export class FriendItemComponent implements OnInit {
   }
 
   acceptEmit(): void {
-    this.accept.emit();
+    this.response.emit(true);
   }
 
   rejectEmit(): void {
-    this.reject.emit();
+    this.response.emit(false);
   }
 
 }

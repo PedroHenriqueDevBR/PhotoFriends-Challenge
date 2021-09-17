@@ -73,19 +73,41 @@ export class TimelineComponent implements OnInit {
     );
   }
 
-  acceptInvitation(id: number): void {
-    console.log(id);
+  responseInvitation(id: number, accept: boolean): void {
+    if (accept == true) {
+      this.acceptInvitation(id);
+    } else {
+      this.rejectInvitation(id);
+    }
   }
 
-  rejectInvitation(id: number): void {
-    this.friendService.rejectInvitation(id).subscribe(
+  acceptInvitation(id: number): void {
+    this.friendService.acceptInvitation(id).subscribe(
       data => {
-        this.getFriendRequests();
+        this.removeFriendInvitation(id);
       },
       error => {
         console.log(error);
       }
     )
+  }
+
+  rejectInvitation(id: number): void {
+    this.friendService.rejectInvitation(id).subscribe(
+      data => {
+        this.removeFriendInvitation(id);
+      },
+      error => {
+        console.log(error);
+      }
+    )
+  }
+
+  removeFriendInvitation(id: number): void {
+    const index = this.friendRequests.findIndex(el => el.id == id);
+    if (index > -1) {
+      this.friendRequests.splice(index, 1);
+    }
   }
 
 }
