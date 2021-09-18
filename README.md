@@ -26,9 +26,9 @@ Por favor, crie um site que atenda às suas necessidades. Você deve usar python
  - [X] Registro de usuário
  - [X] Autenticação de usuário
  - [ ] Adicionar cônjuge
- - [ ] Aceitar ou rejeitar cônjuge
- - [ ] Convidar amigo
- - [ ] Aceitar ou recusar pedido de amizade
+ - [X] Aceitar ou rejeitar cônjuge
+ - [X] Convidar amigo
+ - [X] Aceitar ou recusar pedido de amizade
  - [ ] Criar Book
  - [ ] Listar os Book do usuário e do cônjuge
  - [ ] Adicionar imagens ao Book
