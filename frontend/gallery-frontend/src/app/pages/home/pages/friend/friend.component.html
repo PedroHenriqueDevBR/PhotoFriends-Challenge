@@ -37,11 +37,11 @@
             <div class="info-name py-3">
                 <h1 class="title" [ngClass]="{'hide': selectedBook.id != null || selectedFriend.id == null}">
                     {{selectedFriend.name}}</h1>
-                <button class="btn mt-2 btn-accent-color"
-                    [ngClass]="{'hide': selectedBook.id != null || selectedFriend.id == null || selectedFriend.spouse != undefined}">Solicitar
-                    casamento</button>
-                <h5
-                    [ngClass]="{'hide': selectedFriend.spouse == undefined}">
+                <button (click)="requestSpouse(selectedFriend.id!)" class="btn mt-2 btn-accent-color" [ngClass]="{'hide': selectedBook.id != null || selectedFriend.id == null || selectedFriend.spouse !=
+                    undefined}">
+                    Solicitar casamento
+                </button>
+                <h5 [ngClass]="{'hide': selectedFriend.spouse == undefined}">
                     <span class="badge bg-success">Cônjuge: {{selectedFriend.spouse}}</span>
                 </h5>
             </div>

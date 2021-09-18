@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 import { BookModel } from 'src/app/shared/models/book-model';
 import { PersonModel } from 'src/app/shared/models/person.model';
 import { FriendService } from 'src/app/shared/services/friend.service';
+import { SpouseService } from 'src/app/shared/services/spouse.service';
 
 @Component({
   selector: 'app-friend',
@@ -14,7 +16,11 @@ export class FriendComponent implements OnInit {
   selectedBook: BookModel = new BookModel();
   hideFriendFormModal: boolean = true;
 
-  constructor(private friendService: FriendService) { }
+  constructor(
+    private friendService: FriendService,
+    private spouseService: SpouseService,
+    private toast: ToastrService,
+  ) { }
 
   ngOnInit(): void {
     this.getFriends();
@@ -57,7 +63,7 @@ export class FriendComponent implements OnInit {
           'https://images.pexels.com/photos/3565370/pexels-photo-3565370.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
           'Pedro Henrique',
         );
-        for (let j:number = 0; j < i + 1; j++) {
+        for (let j: number = 0; j < i + 1; j++) {
           book.images.push('https://images.pexels.com/photos/3565370/pexels-photo-3565370.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940');
         }
         books.push(book);
@@ -74,6 +80,26 @@ export class FriendComponent implements OnInit {
       return;
     }
     this.selectedBook = book;
+  }
+
+  requestSpouse(id: number): void {
+    console.log('requestSpouse');
+    this.spouseService.createSpouseInvite(id).subscribe(
+      data => {
+        console.log(data);
+        this.toast.success('Pedido enviado');
+      },
+      error => {
+        console.log(error);
+        if (error.status == 406) {
+          for (var item of error.error.errors) {
+            this.toast.error(item);
+          }
+        } else {
+          this.toast.error('Erro ao solicitar cônjuge');
+        }
+      }
+    );
   }
 
   openFriendFormModal(): void {

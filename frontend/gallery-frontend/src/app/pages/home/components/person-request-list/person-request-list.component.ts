@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 import { InvitationModel } from 'src/app/shared/models/invitation-model';
 import { PersonModel } from 'src/app/shared/models/person.model';
 import { FriendService } from 'src/app/shared/services/friend.service';
@@ -16,6 +17,7 @@ export class PersonRequestListComponent implements OnInit {
   constructor(
     private friendService: FriendService,
     private spouseService: SpouseService,
+    private toast: ToastrService,
   ) { }
 
   ngOnInit(): void {
@@ -76,6 +78,7 @@ export class PersonRequestListComponent implements OnInit {
     this.friendService.acceptInvitation(id).subscribe(
       data => {
         this.removeFriendInvitation(id);
+        this.toast.success('Pedido de amizade aceito');
       },
       error => {
         console.log(error);
@@ -87,6 +90,7 @@ export class PersonRequestListComponent implements OnInit {
     this.friendService.rejectInvitation(id).subscribe(
       data => {
         this.removeFriendInvitation(id);
+        this.toast.success('Pedido de amizade recusado');
       },
       error => {
         console.log(error);
@@ -113,9 +117,17 @@ export class PersonRequestListComponent implements OnInit {
     this.spouseService.acceptInvitation(id).subscribe(
       data => {
         this.removeSpouseInvitation(id);
+        this.toast.success('Pedido de cônjuge aceito');
       },
       error => {
-        console.log(error);
+        if (error.status == 406) {
+          this.removeSpouseInvitation(id);
+          for (var item of error.error.errors) {
+            this.toast.error(item);
+          }
+        } else {
+          this.toast.error('Erro ao aceitas solicitação');
+        }
       }
     )
   }
@@ -124,6 +136,7 @@ export class PersonRequestListComponent implements OnInit {
     this.spouseService.rejectInvitation(id).subscribe(
       data => {
         this.removeSpouseInvitation(id);
+        this.toast.success('Pedido de cônjuge recusado');
       },
       error => {
         console.log(error);

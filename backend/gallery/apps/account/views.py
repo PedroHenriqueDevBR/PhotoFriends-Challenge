@@ -97,7 +97,11 @@ class SpouseInviteResponse(APIView):
             invitation = WeddingInvitation.objects.get(pk=pk)
             if (invitation.receiver != request.user.person):
                 return Response(status=status.HTTP_404_NOT_FOUND)
-            invitation.accept()
+            try:
+                invitation.accept()
+            except:
+                invitation.reject()
+                return Response({"errors": {'O(A) solicitante se tornou cônjuge de outra pessoa'}}, status=status.HTTP_406_NOT_ACCEPTABLE)
             return Response(status=status.HTTP_200_OK)
         except:
             return Response(status=status.HTTP_400_BAD_REQUEST)

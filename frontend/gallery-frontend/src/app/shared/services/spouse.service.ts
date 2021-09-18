@@ -18,7 +18,7 @@ export class SpouseService {
 
   public createSpouseInvite(id: number): Observable<any> {
     return this.http.post(
-      `${this.BASE_URL + ''}`,
+      `${this.BASE_URL}`,
       { "target_id": id },
       { headers: this.getHeader() }
     );
