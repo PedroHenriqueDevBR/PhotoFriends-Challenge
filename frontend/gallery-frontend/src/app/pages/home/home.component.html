@@ -1,8 +1,8 @@
 <main>
-    <app-header></app-header>
+    <app-header (changeStatus)="changeMenuStatus($event)"></app-header>
     <div class="page">
-        <app-menu></app-menu>
-        <div class="content px-4 py-4">
+        <app-menu [ngClass]="{'hide': hideMenu}"></app-menu>
+        <div class="content">
             <router-outlet></router-outlet>
         </div>
     </div>

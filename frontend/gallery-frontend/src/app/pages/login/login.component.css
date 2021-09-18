@@ -20,3 +20,27 @@ main {
     justify-content: center;
     align-items: center;
 }
+
+@media only screen and (max-width: 750px) {
+    main {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .aside {
+        width: 100vw;
+        height: 200px;
+        background: url('https://images.pexels.com/photos/3171837/pexels-photo-3171837.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940');
+        background-size: cover;
+        background-position: center;
+    }
+    
+    .forms-container {
+        width: 100vw;
+        height: calc(100vh - 200px);
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+    }
+}

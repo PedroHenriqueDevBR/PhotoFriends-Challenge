@@ -9,3 +9,9 @@
     background: #F18701;
     color: cornsilk;
 }
+
+@media only screen and (max-width: 750px) {
+    .menu-item {
+        width: 100vw;
+    }
+}

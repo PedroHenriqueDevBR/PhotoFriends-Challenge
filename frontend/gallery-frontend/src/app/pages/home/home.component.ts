@@ -11,6 +11,8 @@ export class HomeComponent implements OnInit {
 
   constructor(private userService: UserService, private router: Router) { }
 
+  hideMenu: boolean = true;
+
   ngOnInit(): void {
     if (!this.userService.userIsLogged()) {
       this.goToLoginPage();
@@ -19,6 +21,10 @@ export class HomeComponent implements OnInit {
 
   goToLoginPage(): void {
     this.router.navigateByUrl('/login');
+  }
+
+  changeMenuStatus(value: boolean): void {
+    this.hideMenu = value;
   }
 
 }

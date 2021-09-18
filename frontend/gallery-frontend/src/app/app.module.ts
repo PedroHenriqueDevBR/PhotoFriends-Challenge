@@ -20,6 +20,7 @@ import { MenuComponent } from './pages/home/components/menu/menu.component';
 import { MenuItemComponent } from './pages/home/components/menu/menu-item/menu-item.component';
 import { EndSessionItemComponent } from './pages/home/components/menu/end-session-item/end-session-item.component';
 import { GalleryComponent } from './pages/home/components/gallery/gallery.component';
+import { PersonRequestListComponent } from './pages/home/components/person-request-list/person-request-list.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { GalleryComponent } from './pages/home/components/gallery/gallery.compon
     FriendItemComponent,
     BookItemComponent,
     GalleryComponent,
-    AddFriendFormComponent
+    AddFriendFormComponent,
+    PersonRequestListComponent
   ],
   imports: [
     BrowserModule,

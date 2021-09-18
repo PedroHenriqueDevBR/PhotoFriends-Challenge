@@ -9,6 +9,11 @@
     font-family: 'Glory', sans-serif;
 }
 
+* {
+    letter-spacing: 0.06em;
+    line-height: 1.5rem;
+}
+
 body {
     background: #eceff1;
 }
@@ -31,21 +36,23 @@ body {
 
 .btn-primary-color {
     background: #3D348B;
-    color: #ddd;
-    font-weight: 500;
+    color: #fff;
+    font-weight: 600;
 }
 
 .btn-primary-color:hover {
+    background: #2e21a3;
     color: #fff;
 }
 
 .btn-accent-color {
     background: #F18701;
-    color: #ddd;
-    font-weight: 500;
+    color: #fff;
+    font-weight: 600;
 }
 
 .btn-accent-color:hover {
+    background: #fc9f25;
     color: #fff;
 }
 
@@ -94,3 +101,4 @@ body {
     background: #3D348B;
     width: 10px;
 }
+

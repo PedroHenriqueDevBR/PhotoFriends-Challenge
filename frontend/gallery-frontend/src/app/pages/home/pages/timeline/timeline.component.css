@@ -15,35 +15,26 @@ main {
     width: fit-content;
 }
 
-
-
-/* timeline information */
-
-.timeline-information {
-    width: 35%;
-    height: 100%;
-    overflow-y: auto;
-    padding: 8px;
-}
-
-.timeline-information .container {
-    background: #fff;
-    border-radius: 8px;
-    box-shadow: 5px 5px 5px #9e9e9e;
-}
-
-.header {
-    width: 100%;
-    height: fit-content;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.avatar {
-    border: 4px solid #fff;
-}
-
 .hide {
     display: none;
+}
+
+.requests {
+    width: 400px;
+}
+
+@media only screen and (min-width: 751px) {
+    .show-mobile-only {
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 750px) {
+    .timeline-list {
+        padding: 16px;
+    }
+
+    .hide-mobile-only {
+        display: none;
+    }
 }

@@ -8,6 +8,15 @@ main {
 }
 
 .content {
+    padding: 24px;
     width: 100vw;
-    height: 90vh;
+    height: calc(100vh - 65px);
+}
+
+@media only screen and (max-width: 750px) {
+    .content {
+        padding: 0px;
+        width: 100vw;
+        height: calc(100vh - 65px);
+    }   
 }

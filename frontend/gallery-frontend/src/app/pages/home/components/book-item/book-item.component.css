@@ -8,14 +8,30 @@
 }
 
 .book:hover {
-    background: #F18701;
-    color: #fff;
+    background: #fff9c4;
+    color: #000;
 }
 
 .image-data {
-    border-radius: 8px;
+    border-radius: 8px 0 0 8px;
 }
 
 .hide {
     display: none;
+}
+
+@media only screen and (max-width: 750px) {
+    .book {
+        height: fit-content;
+        border-radius: 8px 8px 0 0;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .image-data {
+        width: 100%;
+        height: 150px;
+        margin: auto;
+        border-radius: 8px 8px 0 0;
+    }
 }

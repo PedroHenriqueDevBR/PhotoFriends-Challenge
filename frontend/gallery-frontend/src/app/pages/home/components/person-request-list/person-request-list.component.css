@@ -1,0 +1,55 @@
+.timeline-information {
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+    padding: 8px;
+}
+
+.timeline-information .container {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 5px 5px 5px #9e9e9e;
+}
+
+.header {
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.avatar {
+    border: 4px solid #fff;
+}
+
+.hide {
+    display: none;
+}
+
+.accordion-body {
+    padding: 0;
+}
+
+@media only screen and (max-width: 750px) {
+    .timeline-information {
+        width: 100%;
+        height: fit-content;
+        padding: 0;
+    }
+    
+    .timeline-information .container {
+        background: #fff;
+        border-radius: 8px;
+        box-shadow: 5px 5px 5px #9e9e9e;
+    }
+    
+    .header {
+        width: 100%;
+        height: fit-content;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+}

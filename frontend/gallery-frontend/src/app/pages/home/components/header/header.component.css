@@ -6,3 +6,12 @@
     padding: 0px 16px;
     color: white;
 }
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo .btn {
+    color: #fff;
+}

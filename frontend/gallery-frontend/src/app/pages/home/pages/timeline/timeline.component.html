@@ -1,24 +1,13 @@
 <main>
     <div class="timeline-container">
-        <!-- <div class="container py-3">
-        </div> -->
-        <div class="timeline-list px-3">
-            <div *ngFor="let item of books">
-                <app-book-item [book]="item"></app-book-item>
-            </div>
+        <div class="timeline-list">
+            <app-person-request-list class="show-mobile-only"></app-person-request-list>
+            
+                <app-book-item *ngFor="let item of books" [book]="item"></app-book-item>
         </div>
     </div>
-    <div class="timeline-information py-1">
-        <div class="container" [ngClass]="{'hide': spouseRequests.length == 0}">
-            <h5 class="p-3">Cônjuges (Solicitações)</h5>
-            <app-friend-item *ngFor="let item of spouseRequests" [name]=item.person.name [image]=item.person.image [showOptions]=true (response)="responseSpouseInvitation(item.id, $event)"></app-friend-item>
-        </div>
-
-        <div class="container">
-            <h5 class="p-3">Pedidos de amizade</h5>
-            <p class="p-3">Nenhum pedido de amizade recebido</p>
-            <app-friend-item *ngFor="let item of friendRequests" [name]=item.person.name [image]=item.person.image [showOptions]=true (response)="responseFriendInvitation(item.id, $event)"></app-friend-item>
-        </div>
+    <div class="requests hide-mobile-only">
+        <app-person-request-list></app-person-request-list>
     </div>
 
 </main>
