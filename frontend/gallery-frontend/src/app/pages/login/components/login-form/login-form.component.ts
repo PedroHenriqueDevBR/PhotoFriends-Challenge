@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { LoginResponseModel } from 'src/app/shared/models/login_response.model';
 import { PersonModel } from 'src/app/shared/models/person.model';
 import { UserService } from 'src/app/shared/services/user.service';
@@ -13,9 +14,12 @@ import { UserService } from 'src/app/shared/services/user.service';
 export class LoginFormComponent implements OnInit {
   formLogin: FormGroup;
   person: PersonModel;
-  errorMsg: String = '';
 
-  constructor(private userService: UserService, private router: Router) {
+  constructor(
+    private userService: UserService,
+    private router: Router,
+    private toast: ToastrService,
+  ) {
     this.person = new PersonModel();
     this.formLogin = this.createForm(this.person);
   }
@@ -37,9 +41,8 @@ export class LoginFormComponent implements OnInit {
         this.goToHomePage();
       },
       (error) => {
-        console.log(error);
         if (error['status'] == 401) {
-          this.errorMsg = 'Usuário ou senha incorreta';
+          this.toast.error('Usuário ou senha incorreta');
         }
       }
     );

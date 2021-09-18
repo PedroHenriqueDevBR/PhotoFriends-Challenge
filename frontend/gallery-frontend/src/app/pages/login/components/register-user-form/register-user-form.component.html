@@ -15,12 +15,4 @@
         <button type="submit" class="btn my-3 btn-accent-color">Registrar</button>
     </form>
     <button class="btn" [routerLink]="['/login']">Voltar para o login</button>
-    <div *ngIf="successMsg != ''" class="alert alert-success" role="alert">
-        {{successMsg}}
-    </div>
-    <div *ngIf="errorMsg.length != 0" class="alert alert-danger" role="alert">
-        <div *ngFor="let item of errorMsg">
-            <li>{{item}}</li>
-        </div>
-    </div>
 </div>

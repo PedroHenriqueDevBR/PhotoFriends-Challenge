@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { PersonModel } from 'src/app/shared/models/person.model';
 import { UserService } from 'src/app/shared/services/user.service';
 
@@ -9,18 +11,19 @@ import { UserService } from 'src/app/shared/services/user.service';
   styleUrls: ['./register-user-form.component.css']
 })
 export class RegisterUserFormComponent implements OnInit {
-
-  successMsg: String = '';
-  errorMsg: String[] = [];
   formRegister: FormGroup;
   person: PersonModel;
 
-  constructor(private userService: UserService) {
+  constructor(
+    private userService: UserService,
+    private toast: ToastrService,
+    private router: Router,
+  ) {
     this.person = new PersonModel();
     this.formRegister = this.createForm(this.person);
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
   createForm(person: PersonModel): FormGroup {
     return new FormGroup({
@@ -36,22 +39,18 @@ export class RegisterUserFormComponent implements OnInit {
     this.person.password = this.formRegister.value['password'];
     this.userService.registerUser(this.person).subscribe(
       (data) => {
-        this.successMsg = 'Usuário registrado com sucesso\nVolte e efetue o login';
-        this.errorMsg = [];
+        this.toast.success('Usuário registrado com sucesso\nefetue o login');
+        this.router.navigateByUrl('/login');
       },
       (error) => {
         if (error.status == 409) {
-          this.errorMsg.push('Username já registrado');
-          this.successMsg = '';
+          this.toast.error('Username já registrado');
         } else if (error.status == 406) {
-          this.successMsg = '';
-          this.errorMsg = [];
           for (var item of error.error.errors) {
-            this.errorMsg.push(item);
+            this.toast.error(item);
           }
         } else {
-          this.successMsg = '';
-          this.errorMsg.push('Erro ao registrar usuário');
+          this.toast.error('Erro ao registrar usuário');
         }
       }
     );

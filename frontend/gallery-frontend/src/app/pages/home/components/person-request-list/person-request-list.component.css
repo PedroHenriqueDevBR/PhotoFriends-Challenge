@@ -31,7 +31,7 @@
     padding: 0;
 }
 
-@media only screen and (max-width: 750px) {
+@media only screen and (max-width: 950px) {
     .timeline-information {
         width: 100%;
         height: fit-content;

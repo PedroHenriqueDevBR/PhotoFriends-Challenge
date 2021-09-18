@@ -94,13 +94,13 @@ main {
 }
 
 
-@media only screen and (min-width: 751px) {
+@media only screen and (min-width: 950px) {
     .show-mobile-only {
         display: none;
     }
 }
 
-@media only screen and (max-width: 750px) {
+@media only screen and (max-width: 950px) {
     .timeline-list {
         padding: 16px;
     }

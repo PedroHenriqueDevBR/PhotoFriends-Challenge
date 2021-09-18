@@ -12,6 +12,9 @@ export class MenuItemComponent implements OnInit {
   @Input()
   selected: boolean = false;
 
+  @Input()
+  isHide: boolean = false;
+
   constructor() { }
 
   ngOnInit(): void {

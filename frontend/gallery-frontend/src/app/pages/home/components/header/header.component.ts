@@ -9,7 +9,6 @@ export class HeaderComponent implements OnInit {
 
   @Output()
   changeStatus = new EventEmitter();
-  currentStatus: boolean = true;
 
   constructor() { }
 
@@ -17,8 +16,7 @@ export class HeaderComponent implements OnInit {
   }
 
   emitChange() {
-    this.currentStatus = !this.currentStatus;
-    this.changeStatus.emit(this.currentStatus);
+    this.changeStatus.emit();
   }
 
 }

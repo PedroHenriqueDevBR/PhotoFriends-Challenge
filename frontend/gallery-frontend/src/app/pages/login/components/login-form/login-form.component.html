@@ -12,10 +12,6 @@
         <ng-template #valid><button type="submit" class="btn my-3 btn-accent-color">Entrar</button></ng-template>
         <ng-template #invalid><button type="button" class="btn my-3 disable-color">Entrar</button></ng-template>
     </form>
-    <button class="btn" [routerLink]="['/login/registrar']">Ainda não possui cadastro<br>Clique aqui para se
-        registrar</button>
-
-    <div *ngIf="errorMsg != ''" class="alert alert-danger" role="alert">
-        {{ errorMsg }}
-    </div>
+    <button class="btn" [routerLink]="['/login/registrar']">
+        Ainda não possui cadastro<br>Clique aqui para se registrar</button>
 </div>

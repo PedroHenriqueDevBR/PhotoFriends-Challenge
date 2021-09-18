@@ -1,7 +1,7 @@
 <main>
-    <app-header (changeStatus)="changeMenuStatus($event)"></app-header>
+    <app-header (changeStatus)="changeMenuStatus()"></app-header>
     <div class="page">
-        <app-menu [ngClass]="{'hide': hideMenu}"></app-menu>
+        <app-menu [isHide]="hideMenu" (hideMenu)="changeMenuStatus()"></app-menu>
         <div class="content">
             <router-outlet></router-outlet>
         </div>

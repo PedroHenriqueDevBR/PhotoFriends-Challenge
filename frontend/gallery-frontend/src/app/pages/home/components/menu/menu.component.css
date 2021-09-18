@@ -1,7 +1,28 @@
 .menu {
+    z-index: 100;
     height: calc(100vh - 65px);
+    width: 250px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     background: #fff;
+    transition: 300ms;
+}
+
+.hide {
+    z-index: 100;
+    width: 0px;
+}
+
+@media only screen and (max-width: 950px) {
+    .menu {
+        z-index: 100;
+        height: calc(100vh - 65px);
+            
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        background: #fff;
+        transition: 300ms;
+    }
 }

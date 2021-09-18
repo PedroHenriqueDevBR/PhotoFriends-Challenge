@@ -1,5 +1,4 @@
 .menu-item {
-    min-width: 250px;
     width: 100%;
     padding: 16px;
     cursor: pointer;
@@ -10,8 +9,6 @@
     color: cornsilk;
 }
 
-@media only screen and (max-width: 750px) {
-    .menu-item {
-        width: 100vw;
-    }
+.hide {
+    display: none;
 }

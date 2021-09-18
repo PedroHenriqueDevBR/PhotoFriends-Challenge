@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserService } from 'src/app/shared/services/user.service';
 
@@ -8,6 +8,9 @@ import { UserService } from 'src/app/shared/services/user.service';
   styleUrls: ['./end-session-item.component.css']
 })
 export class EndSessionItemComponent implements OnInit {
+
+  @Input()
+  isHide: boolean = false;
 
   constructor(private userService: UserService, private router: Router) { }
 

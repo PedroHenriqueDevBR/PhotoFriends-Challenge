@@ -13,7 +13,7 @@ main {
     height: calc(100vh - 65px);
 }
 
-@media only screen and (max-width: 750px) {
+@media only screen and (max-width: 950px) {
     .content {
         padding: 0px;
         width: 100vw;

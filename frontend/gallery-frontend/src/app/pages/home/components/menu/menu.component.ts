@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { Router, RouterModule } from '@angular/router';
+
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-menu',
@@ -12,10 +13,17 @@ export class MenuComponent implements OnInit {
 
   constructor(private router: Router) { }
 
-  ngOnInit(): void {
-  }
+  @Input()
+  isHide: boolean = true;
+
+  @Output()
+  hideMenu = new EventEmitter();
+
+  ngOnInit(): void {}
 
   changePage(page: number) : void {
+    this.isHide = !this.isHide;
+    this.hideMenu.emit();
     this.currentPage = page;
     if (page == 0) {
       this.router.navigateByUrl('/home');

@@ -1,9 +1,9 @@
-<div class="menu">
+<div class="menu" [ngClass]="{'hide': isHide}">
     <div class="options">
-        <h4 class="m-3">Opções</h4>
-        <app-menu-item text="Home" [selected]="currentPage == 0" (click)="changePage(0)"></app-menu-item>
-        <app-menu-item text="Meus Books" [selected]="currentPage == 1" (click)="changePage(1)"></app-menu-item>
-        <app-menu-item text="Meus amigos" [selected]="currentPage == 2" (click)="changePage(2)"></app-menu-item>
+        <h4 class="m-3" [ngClass]="{'hide': isHide}" >Opções</h4>
+        <app-menu-item [isHide]="isHide" text="Home" [selected]="currentPage == 0" (click)="changePage(0)"></app-menu-item>
+        <app-menu-item [isHide]="isHide" text="Meus Books" [selected]="currentPage == 1" (click)="changePage(1)"></app-menu-item>
+        <app-menu-item [isHide]="isHide" text="Meus amigos" [selected]="currentPage == 2" (click)="changePage(2)"></app-menu-item>
     </div>
-    <app-end-session-item text="Encerrar sessão"></app-end-session-item>
+    <app-end-session-item [isHide]="isHide" text="Encerrar sessão"></app-end-session-item>
 </div>

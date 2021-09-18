@@ -23,8 +23,8 @@ export class HomeComponent implements OnInit {
     this.router.navigateByUrl('/login');
   }
 
-  changeMenuStatus(value: boolean): void {
-    this.hideMenu = value;
+  changeMenuStatus(): void {
+    this.hideMenu = !this.hideMenu;
   }
 
 }
