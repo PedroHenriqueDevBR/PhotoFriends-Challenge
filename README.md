@@ -25,14 +25,17 @@ Por favor, crie um site que atenda às suas necessidades. Você deve usar python
 
  - [X] Registro de usuário
  - [X] Autenticação de usuário
- - [ ] Adicionar cônjuge
- - [X] Aceitar ou rejeitar cônjuge
- - [X] Convidar amigo
+ - [X] Enviar convide para cônjuge
+ - [X] Apresentar os pedidos de cônjuges recebidos
+ - [X] Aceitar ou rejeitar convite de cônjuge
+ - [X] Convidar amigo com base no username
+ - [X] Apresentar os pedidos de amizades recebidos
  - [X] Aceitar ou recusar pedido de amizade
+ - [X] Apresentar os meus amigos
  - [ ] Criar Book
- - [ ] Listar os Book do usuário e do cônjuge
+ - [ ] Listar os meus Books (books do(a) cônjuge inclusos)
  - [ ] Adicionar imagens ao Book
- - [ ] Listar todos os Books do amigos
+ - [ ] Listar todos os Books dos meus amigos
  - [ ] Acessar perfil de um amigo
  - [ ] Acessar Book de um amigo
  - [ ] Adicionar Imagem no Book do amigo
