@@ -12,6 +12,7 @@ urlpatterns = [
     
     path('friend/<int:pk>/books', FriendBooks.as_view(), name=FriendBooks.name),
     path('friend/<int:pk>/books/<int:book_pk>', FriendImageBook.as_view(), name=FriendImageBook.name),
+    path('friends', FriendBooksAll.as_view(), name=FriendBooksAll.name),
 
     path('photo/<int:pk>/comment/', CommentCreateAndList.as_view(), name=CommentCreateAndList.name),
     path('comment/<int:pk>', CommentEdit.as_view(), name=CommentEdit.name),

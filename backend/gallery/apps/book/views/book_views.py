@@ -1,7 +1,7 @@
 from apps.book.serializers.photo_serializer import PhotoSerializer
 from apps.core.models import Book
 from apps.book.validators.book_validator import book_is_valid_or_errors
-from rest_framework import status
+from rest_framework import serializers, status
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework.permissions import IsAuthenticated
@@ -76,3 +76,18 @@ class BookAddAndListImages(APIView):
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_406_NOT_ACCEPTABLE)
+
+
+class FriendBooksAll(APIView):
+    name = 'friend-books-all'
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request):
+        books = []
+        friends = request.user.person.friends.all()
+        for friend in friends:
+            books.extend(friend.books.all())
+        order = lambda x: x.id
+        response = sorted(books, key=order, reverse=True)
+        serializer = BookSerializer(response, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
