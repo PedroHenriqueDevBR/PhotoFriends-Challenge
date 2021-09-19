@@ -84,6 +84,7 @@ class Like(models.Model):
 class Comment(models.Model):
     person = models.ForeignKey(Person, on_delete=models.CASCADE, related_name='created_comments')
     photo = models.ForeignKey(Photo, on_delete=models.CASCADE, related_name='received_comments')
+    content = models.CharField(max_length=2500)
     created_at = models.DateField(auto_created=True, auto_now_add=True)
 
     def remove_comment(self):
