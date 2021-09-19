@@ -66,9 +66,9 @@ Por favor, crie um site que atenda às suas necessidades. Você deve usar python
  - [X] Acessar Book de um amigo
  - [X] Adicionar Imagem no Book do amigo
  - [X] Aceitar ou recusar imagem adicionada por um amigo (criador(ar) ou cônjuge)
- - [ ] Comentar a foto de um amigo
- - [ ] Listar todos os comentários de uma imagem
- - [ ] Remover o comentário (se feito por mim ou pelo dono da foto)
+ - [X] Comentar a foto de um amigo
+ - [X] Listar todos os comentários de uma imagem
+ - [X] Remover o comentário (se feito por mim ou pelo dono da foto)
  - [ ] Curtir a foto de um amigo
  - [ ] Apresentar a quantidade de curtidas recebidas
 
