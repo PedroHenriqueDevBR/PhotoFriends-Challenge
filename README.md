@@ -69,8 +69,8 @@ Por favor, crie um site que atenda às suas necessidades. Você deve usar python
  - [X] Comentar a foto de um amigo
  - [X] Listar todos os comentários de uma imagem
  - [X] Remover o comentário (se feito por mim ou pelo dono da foto)
- - [ ] Curtir a foto de um amigo
- - [ ] Apresentar a quantidade de curtidas recebidas
+ - [X] Curtir a foto de um amigo
+ - [X] Apresentar a quantidade de curtidas recebidas
 
 
 ## Frontend (Finalizadas)
