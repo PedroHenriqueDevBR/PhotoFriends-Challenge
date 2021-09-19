@@ -1,4 +1,5 @@
-from .views import *
+from .views.book_views import *
+from .views.photo_views import *
 from django.urls import path
 
 urlpatterns = [

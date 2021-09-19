@@ -1,4 +1,6 @@
-from .views import *
+from .views.person_views import *
+from .views.spouse_views import *
+from .views.friend_views import *
 from django.urls import path
 from rest_framework_simplejwt import views as jwt_views
 
