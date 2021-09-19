@@ -1,7 +1,8 @@
+from django.urls import path
 from .views.book_views import *
 from .views.photo_views import *
 from .views.comment_views import *
-from django.urls import path
+from .views.like_views import *
 
 urlpatterns = [
     path('', BookCreateAndList.as_view(), name=BookCreateAndList.name),
@@ -14,4 +15,6 @@ urlpatterns = [
 
     path('photo/<int:pk>/comment/', CommentCreateAndList.as_view(), name=CommentCreateAndList.name),
     path('comment/<int:pk>', CommentEdit.as_view(), name=CommentEdit.name),
+
+    path('photo/<int:pk>/like/', LikeCreateAndList.as_view(), name=LikeCreateAndList.name),   
 ]

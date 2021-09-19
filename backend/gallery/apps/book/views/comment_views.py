@@ -1,14 +1,10 @@
 from apps.book.validators.comment_validator import comment_is_valid_or_errors
-from typing import Dict
 from apps.book.serializers.comment_serializer import CommentSerializer, CommentSerializerCreate
-from apps.book.serializers.photo_serializer import PhotoSerializer
-from apps.core.models import Book, Comment, Photo
-from apps.book.validators.book_validator import book_is_valid_or_errors
+from apps.core.models import Comment, Photo
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework.permissions import IsAuthenticated
-from ..serializers.book_serializer import BookSerializer, BookSerializerCreator
 
 class CommentCreateAndList(APIView):
     name = 'comment-create-and-list'
