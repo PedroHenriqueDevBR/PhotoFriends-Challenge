@@ -1,6 +1,6 @@
 from django.contrib.auth.models import User
 from rest_framework.serializers import ModelSerializer
-from apps.core.models import Person, FriendInvitation, WeddingInvitation
+from apps.core.models import Person
 from django.contrib.auth.models import User
 
 

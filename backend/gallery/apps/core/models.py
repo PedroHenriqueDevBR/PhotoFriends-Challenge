@@ -66,7 +66,7 @@ class Book(models.Model):
     title = models.CharField(max_length=200)
     description = models.CharField(max_length=2500)
     cover_image = models.ImageField(upload_to=upload_image_formater, blank=True, null=True)
-    created_at = models.DateField(auto_created=True)
+    created_at = models.DateField(auto_created=True, auto_now_add=True)
     creator = models.ForeignKey(Person, on_delete=models.CASCADE, related_name='books')
 
 
