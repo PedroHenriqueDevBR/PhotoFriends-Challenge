@@ -23,6 +23,58 @@ Por favor, crie um site que atenda às suas necessidades. Você deve usar python
 
 ## Funcionalidades
 
+ * Registro de usuário
+ * Autenticação de usuário
+ * Enviar convide para cônjuge
+ * Apresentar os pedidos de cônjuges recebidos
+ * Aceitar ou rejeitar convite de cônjuge
+ * Convidar amigo com base no username
+ * Apresentar os pedidos de amizades recebidos
+ * Aceitar ou recusar pedido de amizade
+ * Apresentar os meus amigos
+ * Criar Book
+ * Listar os meus Books (books do(a) cônjuge inclusos)
+ * Adicionar imagens ao Book
+ * Listar todos os Books dos meus amigos
+ * Acessar perfil de um amigo
+ * Acessar Book de um amigo
+ * Adicionar Imagem no Book do amigo
+ * Aceitar ou recusar imagem adicionada por um amigo (criador(ar) ou cônjuge)
+ * Comentar a foto de um amigo
+ * Listar todos os comentários de uma imagem
+ * Remover o comentário (se feito por mim ou pelo dono da foto)
+ * Curtir a foto de um amigo
+ * Apresentar a quantidade de curtidas recebidas
+
+
+## Backend (Finalizadas)
+
+ - [X] Registro de usuário
+ - [X] Autenticação de usuário
+ - [X] Enviar convide para cônjuge
+ - [X] Apresentar os pedidos de cônjuges recebidos
+ - [X] Aceitar ou rejeitar convite de cônjuge
+ - [X] Convidar amigo com base no username
+ - [X] Apresentar os pedidos de amizades recebidos
+ - [X] Aceitar ou recusar pedido de amizade
+ - [X] Apresentar os meus amigos
+ - [X] Criar Book
+ - [X] Listar os meus Books (books do(a) cônjuge inclusos)
+ - [X] Adicionar imagens ao Book
+ - [X] Listar todos os Books dos meus amigos
+ - [X] Acessar perfil de um amigo
+ - [X] Acessar Book de um amigo
+ - [X] Adicionar Imagem no Book do amigo
+ - [X] Aceitar ou recusar imagem adicionada por um amigo (criador(ar) ou cônjuge)
+ - [ ] Comentar a foto de um amigo
+ - [ ] Listar todos os comentários de uma imagem
+ - [ ] Remover o comentário (se feito por mim ou pelo dono da foto)
+ - [ ] Curtir a foto de um amigo
+ - [ ] Apresentar a quantidade de curtidas recebidas
+
+
+## Frontend (Finalizadas)
+
  - [X] Registro de usuário
  - [X] Autenticação de usuário
  - [X] Enviar convide para cônjuge
@@ -40,3 +92,8 @@ Por favor, crie um site que atenda às suas necessidades. Você deve usar python
  - [ ] Acessar Book de um amigo
  - [ ] Adicionar Imagem no Book do amigo
  - [ ] Aceitar ou recusar imagem adicionada por um amigo (criador(ar) ou cônjuge)
+ - [ ] Comentar a foto de um amigo
+ - [ ] Listar todos os comentários de uma imagem
+ - [ ] Remover o comentário (se feito por mim ou pelo dono da foto)
+ - [ ] Curtir a foto de um amigo
+ - [ ] Apresentar a quantidade de curtidas recebidas
