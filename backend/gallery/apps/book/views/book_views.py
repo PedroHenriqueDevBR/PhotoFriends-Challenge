@@ -13,10 +13,15 @@ class BookCreateAndList(APIView):
 
     # Selecionar todas os meus books e do conjuge
     def get(self, request):
-        books = request.user.person.books.all()
-        serializer = BookSerializer(books, many=True)
+        person = request.user.person
+        books_response = []
+        my_books = person.books.all()
+        books_response.extend(my_books)
+        if person.spouse is not None:
+            spouse_books = person.spouse.books.all()
+            books_response.extend(spouse_books)
+        serializer = BookSerializer(books_response, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
-        # TODO: Deve retornar a lista de books do(a) cômjuge tembém
 
     # Criar novo book
     def post(self, request):
@@ -82,7 +87,6 @@ class FriendBooksAll(APIView):
     name = 'friend-books-all'
     permission_classes = [IsAuthenticated]
 
-    # TODO: BUG (Está retornando as fotos escondidas)
     def get(self, request):
         books = []
         friends = request.user.person.friends.all()
