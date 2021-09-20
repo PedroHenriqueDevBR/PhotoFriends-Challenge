@@ -85,8 +85,8 @@ Por favor, crie um site que atenda às suas necessidades. Você deve usar python
  - [X] Aceitar ou recusar pedido de amizade
  - [X] Apresentar os meus amigos
  - [X] Criar Book
- - [ ] Listar os meus Books (books do(a) cônjuge inclusos)
- - [ ] Adicionar imagens ao Book
+ - [X] Listar os meus Books (books do(a) cônjuge inclusos)
+ - [X] Adicionar imagens ao Book
  - [X] Listar todos os Books dos meus amigos
  - [X] Acessar perfil de um amigo
  - [X] Acessar Book de um amigo
