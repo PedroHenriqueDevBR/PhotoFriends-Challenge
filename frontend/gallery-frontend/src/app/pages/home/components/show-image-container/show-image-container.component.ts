@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
+import { CommentModel } from 'src/app/shared/models/comment-model';
 import { PhotoModel } from 'src/app/shared/models/photo-model';
 import { MetadataImageService } from 'src/app/shared/services/metadata-image.service';
 import { PhotoService } from 'src/app/shared/services/photo.service';
@@ -21,9 +22,12 @@ export class ShowImageContainerComponent implements OnInit {
 
   @Input()
   photo: PhotoModel = new PhotoModel('');
-  
+
   @Output()
   emitClose = new EventEmitter();
+  
+  comments: CommentModel[] = [];
+  hideCommentFormModal: boolean = true;
 
   likes: number = 0;
 
@@ -39,7 +43,8 @@ export class ShowImageContainerComponent implements OnInit {
   }
 
   ngOnChanges() {
-    this.getLikes(this.photo.id!);
+    this.getLikes();
+    this.getComments();
   }
 
   closeModal(): void {
@@ -85,13 +90,32 @@ export class ShowImageContainerComponent implements OnInit {
     );
   }
 
-  getLikes(photoId: number) {
+  getLikes() {
     this.metadataService.getLikesFromPhoto(this.photo.id!).subscribe(
       data => {
         this.likes = data.length;
       },
       error => {}
     );
+  }
+
+  getComments() {
+    this.metadataService.getCommentsFromPhoto(this.photo.id!).subscribe(
+      data => {
+        this.comments = [];
+        this.comments = data;
+      },
+      error => {}
+    );
+  }
+
+  showCommentFormModal() {
+    this.hideCommentFormModal = false;
+  }
+
+  closeCommentFormModal() {
+    this.hideCommentFormModal = true;
+    this.getComments();
   }
 
 }

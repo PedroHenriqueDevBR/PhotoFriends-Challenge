@@ -26,6 +26,7 @@ import { PersonRequestListComponent } from './pages/home/components/person-reque
 import { AddBookFormComponent } from './pages/home/components/add-book-form/add-book-form.component';
 import { AddPhotoFormComponent } from './pages/home/components/add-photo-form/add-photo-form.component';
 import { ShowImageContainerComponent } from './pages/home/components/show-image-container/show-image-container.component';
+import { AddCommentFormComponent } from './pages/home/components/add-comment-form/add-comment-form.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import { ShowImageContainerComponent } from './pages/home/components/show-image-
     PersonRequestListComponent,
     AddBookFormComponent,
     AddPhotoFormComponent,
-    ShowImageContainerComponent
+    ShowImageContainerComponent,
+    AddCommentFormComponent
   ],
   imports: [
     BrowserModule,

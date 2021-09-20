@@ -19,7 +19,6 @@ export class AddBookFormComponent implements OnInit {
 
   currentImage: any;
 
-
   form: FormGroup;
 
   constructor(

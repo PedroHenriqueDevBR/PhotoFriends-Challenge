@@ -35,7 +35,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background: darkslategrey;
+    background: #424242;
 }
 
 .img-data .body img {
@@ -64,7 +64,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 8px;
+    padding: 16px 32px;
     background: #fff;
     width: 100%;
 }
@@ -84,6 +84,7 @@
     padding: 16px;
     border-radius: 16px;
     width: 100%;
+    margin: 8px 0;
 }
 
 .hide {

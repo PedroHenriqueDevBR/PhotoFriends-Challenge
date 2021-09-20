@@ -2,7 +2,7 @@
     <div class="components  container row">
 
         <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 col-xxl-6 card img-data">
-            <div class="header p-2">
+            <div class="header p-3">
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
                     (click)="closeModal()"></button>
             </div>
@@ -10,35 +10,35 @@
                 <img src="{{photo.url}}" alt="show">
             </div>
             <div class="footer py-4">
-                <button type="button" (click)="rejectImage()" class="btn btn-danger"
+                <button type="button" (click)="rejectImage()" class="btn"
                     [ngClass]="{'hide': showControls==false}">Ocultar imagem</button>
-                <button type="button" (click)="acceptImage()" class="btn btn-success"
+                <button type="button" (click)="acceptImage()" class="btn"
                     [ngClass]="{'hide': showControls==false}">Tornar vísivel</button>
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="closeModal()">Fechar
+                <button type="button" class="btn" data-bs-dismiss="modal" (click)="closeModal()">Fechar
                     apresentação</button>
             </div>
         </div>
         <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 col-xxl-6 content">
             <div class="header">
-                <div>Likes recebidos: {{likes}}</div>
+                <div>
+                    Likes recebidos: <h3 class="badge bg-success">{{likes}}</h3>
+                </div>
                 <div class="buttons">
                     <button class="btn btn-success" (click)="addLike()">Like</button>
-                    <button class="btn btn-primary">Comentar</button>
+                    <button class="btn btn-primary" (click)="showCommentFormModal()">Comentar</button>
                 </div>
             </div>
 
             <div class="px-3 pt-2">
-                <div class="comment card">
+                <div *ngFor="let item of comments" class="comment card">
                     <p class="title">
-                        Criador do comentário
+                        {{item.person}}
                     </p>
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam voluptates recusandae, optio
-                        quo cupiditate placeat accusantium distinctio. Doloremque nisi quibusdam iste nulla minima?
-                        Cupiditate ex, facilis vel deserunt sit reiciendis!
-                    </p>
+                    <p>{{ item.content }}</p>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+<app-add-comment-form [photo]="photo" [hide]="hideCommentFormModal" (emitClose)="closeCommentFormModal()" ></app-add-comment-form>
