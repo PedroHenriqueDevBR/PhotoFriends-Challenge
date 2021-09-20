@@ -87,9 +87,9 @@ Por favor, crie um site que atenda às suas necessidades. Você deve usar python
  - [ ] Criar Book
  - [ ] Listar os meus Books (books do(a) cônjuge inclusos)
  - [ ] Adicionar imagens ao Book
- - [ ] Listar todos os Books dos meus amigos
- - [ ] Acessar perfil de um amigo
- - [ ] Acessar Book de um amigo
+ - [X] Listar todos os Books dos meus amigos
+ - [X] Acessar perfil de um amigo
+ - [X] Acessar Book de um amigo
  - [ ] Adicionar Imagem no Book do amigo
  - [ ] Aceitar ou recusar imagem adicionada por um amigo (criador(ar) ou cônjuge)
  - [ ] Comentar a foto de um amigo
