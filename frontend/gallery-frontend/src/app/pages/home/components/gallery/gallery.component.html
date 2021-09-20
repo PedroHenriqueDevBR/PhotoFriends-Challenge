@@ -1,8 +1,4 @@
 <div class="gallery" [ngClass]="{'hide': hide}">
-    <div class="gallery-header mt-4">
-        <h1 class="title">Galeria</h1>
-        <button class="btn btn-accent-color">Adicionar</button>
-    </div>
     <div class="images mt-3">
         <div *ngFor="let item of images" class="image-data"
             (click)="selectImage(item.url)"
@@ -11,5 +7,7 @@
 </div>
 
 <div class="hide p-5" [ngClass]="{'image-show': selectedImage != ''}" (click)="removeSelectedImage()">
-    <img src="{{selectedImage}}" alt="Image">
+    <div class="image-cotent">
+        <img src="{{selectedImage}}" alt="Image">
+    </div>
 </div>

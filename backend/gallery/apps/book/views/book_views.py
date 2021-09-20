@@ -83,6 +83,7 @@ class FriendBooksAll(APIView):
     permission_classes = [IsAuthenticated]
 
     def get(self, request):
+        # TODO: BUG (Está retornando as fotos escondidas)
         books = []
         friends = request.user.person.friends.all()
         for friend in friends:

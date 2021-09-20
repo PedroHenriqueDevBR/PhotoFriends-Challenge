@@ -1,0 +1,26 @@
+<div class="form-container" [ngClass]="{'hide': hide}">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Adicionar foto</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+                    (click)="closeModal()"></button>
+            </div>
+            <div class="modal-body">
+
+                <form>
+                    <div class="mb-3">
+                        <label for="photo" class="form-label">Imagem</label>
+                        <input class="form-control" type="file" id="photo" (change)="inputFile($event)">
+                    </div>
+                </form>
+                
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal"
+                    (click)="closeModal()">Cancelar</button>
+                <button type="button" class="btn btn-primary-color" (click)="addPhoto()">Adicionar</button>
+            </div>
+        </div>
+    </div>
+</div>

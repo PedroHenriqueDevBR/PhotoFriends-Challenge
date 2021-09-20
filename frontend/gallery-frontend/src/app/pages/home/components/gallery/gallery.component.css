@@ -39,3 +39,13 @@
     box-shadow: 0px 0px 35px #00000099;
     border-radius: 8px;
 }
+
+.image-cotent {
+    background: #fff;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}

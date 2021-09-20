@@ -1,10 +1,9 @@
 .book {
     height: fit-content;
-    border-radius: 8px;
+    border-bottom: 1px solid #ddd;
     display: flex;
     cursor: pointer;
     background: #fff;
-    box-shadow: 0 0 5px #9e9e9e;
 }
 
 .book:hover {
@@ -13,7 +12,7 @@
 }
 
 .image-data {
-    border-radius: 8px 0 0 8px;
+    border-radius: 4px 0 0 4px;
 }
 
 @media only screen and (max-width: 950px) {

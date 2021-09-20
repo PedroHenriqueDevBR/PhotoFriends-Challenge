@@ -74,6 +74,7 @@ class FriendBooks(APIView):
 
     # Lista todos os books de um amigo
     def get(self, request, pk):
+        # TODO: BUG (Está retornando as fotos escondidas)
         try:
             friend = Person.objects.get(pk=pk)
             assert(request.user.person in friend.friends.all())

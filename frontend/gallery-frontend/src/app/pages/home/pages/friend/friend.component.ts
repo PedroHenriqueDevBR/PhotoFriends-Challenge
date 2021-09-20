@@ -68,22 +68,6 @@ export class FriendComponent implements OnInit {
           friend.books = data;
         }
       )
-      // let books = [];
-      // for (let i: number = 0; i < friend.id!; i++) {
-      //   const book: BookModel = new BookModel();
-      //   book.id = i;
-      //   book.toCreate(
-      //     `Titulo do book ${i + 1}`,
-      //     'Descrição do book, Lorem ipsum dolor sit amet consectetur adipisicing elit. Non odio expedita dolore quis perspiciatis tempora, illum vitae magnam ad explicabo ut dolorum eveniet nemo minus inventore pariatur? Accusantium, hic dolores. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Exercitationem molestiae obcaecati error dolores. Possimus voluptatem porro cumque minus laborum nisi obcaecati tempora. Nulla possimus deleniti similique ut dolores impedit doloribus.',
-      //     'https://images.pexels.com/photos/3565370/pexels-photo-3565370.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
-      //     'Pedro Henrique',
-      //   );
-      //   for (let j: number = 0; j < i + 1; j++) {
-      //     book.images.push(new PhotoModel('https://images.pexels.com/photos/3565370/pexels-photo-3565370.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'));
-      //   }
-      //   books.push(book);
-      // }
-      // friend.books = books;
     }
   }
 

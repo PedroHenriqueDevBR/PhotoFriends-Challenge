@@ -23,6 +23,8 @@ import { MenuItemComponent } from './pages/home/components/menu/menu-item/menu-i
 import { EndSessionItemComponent } from './pages/home/components/menu/end-session-item/end-session-item.component';
 import { GalleryComponent } from './pages/home/components/gallery/gallery.component';
 import { PersonRequestListComponent } from './pages/home/components/person-request-list/person-request-list.component';
+import { AddBookFormComponent } from './pages/home/components/add-book-form/add-book-form.component';
+import { AddPhotoFormComponent } from './pages/home/components/add-photo-form/add-photo-form.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +44,9 @@ import { PersonRequestListComponent } from './pages/home/components/person-reque
     BookItemComponent,
     GalleryComponent,
     AddFriendFormComponent,
-    PersonRequestListComponent
+    PersonRequestListComponent,
+    AddBookFormComponent,
+    AddPhotoFormComponent
   ],
   imports: [
     BrowserModule,

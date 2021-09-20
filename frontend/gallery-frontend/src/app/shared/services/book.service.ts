@@ -2,7 +2,6 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BookModel } from '../models/book-model';
-import { UserService } from './user.service';
 
 @Injectable({
   providedIn: 'root'
@@ -18,6 +17,21 @@ export class BookService {
 
   private getHeader() {
     return { "Authorization": this.getJWTKey() };
+  }
+
+  public createBook(formData: FormData): Observable<any> {
+    return this.http.post(
+      `${this.BASE_URL}`,
+      formData,
+      { headers: this.getHeader() }
+    );
+  }
+
+  public booksFromLoggedUser(): Observable<BookModel[]> {
+    return this.http.get<BookModel[]>(
+      `${this.BASE_URL}`,
+      { headers: this.getHeader() }
+    );
   }
 
   public allBooksFromMyFriends(): Observable<BookModel[]> {

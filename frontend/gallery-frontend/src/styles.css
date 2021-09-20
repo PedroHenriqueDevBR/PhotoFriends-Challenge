@@ -1,4 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Glory&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Raleway&display=swap'); */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display&family=Roboto+Slab:wght@200&display=swap');
 
 * {
     padding: 0;
@@ -6,7 +7,7 @@
     box-sizing: border-box;
     list-style: none;
     text-decoration: none;
-    font-family: 'Glory', sans-serif;
+    font-family: 'Raleway', sans-serif;
 }
 
 * {
@@ -70,17 +71,16 @@ body {
 
 .title {
     font-style: normal;
-    font-weight: 500;
-    font-size: 1.8rem;
-    line-height: 21px;
+    font-weight: 600;
+    font-size: 1.7rem;
     margin-top: auto;
 }
 
 .subtitle {
     font-style: normal;
-    font-weight: 300;
-    font-size: 1.4rem;
-    line-height: 16px;
+    font-size: 1.2rem;
+    line-height: 1.8rem;
+    font-family: 'Roboto Slab', serif;
 }
 
 /* Scrollbar */

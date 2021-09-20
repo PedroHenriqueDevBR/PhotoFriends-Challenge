@@ -3,4 +3,27 @@ main {
     height: 100%;
     background: #FFFFFF;
     border-radius: 8px;
+    display: flex;
+}
+
+.my-books {
+    width: 100%;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 8px 8px 0 0;
+}
+
+.selected-book {
+    width: 200%;
+    height: 100%;
+    overflow-y: auto;
+}
+
+.cover-image {
+    min-height: 400px;
+    height: 400px;
 }

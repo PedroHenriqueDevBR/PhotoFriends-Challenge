@@ -1,0 +1,36 @@
+<div class="form-container" [ngClass]="{'hide': hide}">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Criar Galeria</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+                    (click)="closeModal()"></button>
+            </div>
+            <div class="modal-body">
+
+                <form [formGroup]="form" (ngSubmit)="onSubmit()">
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="title" placeholder="Título" formControlName="title"
+                            required>
+                        <label for="title">Título</label>
+                    </div>
+                    <div class="mb-3">
+                        <label for="description" class="form-label">Descrição</label>
+                        <textarea class="form-control" id="description" rows="4"
+                            formControlName="description"></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label for="cover_image" class="form-label">Imagem</label>
+                        <input class="form-control" type="file" id="cover_image" (change)="inputFile($event)">
+                    </div>
+                </form>
+                
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal"
+                    (click)="closeModal()">Cancelar</button>
+                <button type="button" class="btn btn-primary-color" (click)="onSubmit()">Criar</button>
+            </div>
+        </div>
+    </div>
+</div>
