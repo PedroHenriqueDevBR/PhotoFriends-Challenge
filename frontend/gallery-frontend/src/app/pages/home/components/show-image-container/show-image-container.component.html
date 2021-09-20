@@ -1,17 +1,43 @@
-<div class="show-image-container" [ngClass]="{'hide': hide}">
-    <div class="modal-dialog modal-xl modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header">
+<div class="image-show" [ngClass]="{'hide': hide}">
+    <div class="components  container row">
+
+        <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 col-xxl-6 card img-data">
+            <div class="header p-2">
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
                     (click)="closeModal()"></button>
             </div>
-            <div class="modal-body">
+            <div class="body">
                 <img src="{{photo.url}}" alt="show">
             </div>
-            <div class="modal-footer">
-                <button type="button" (click)="rejectImage()" class="btn btn-danger" [ngClass]="{'hide': showControls==false}">Ocultar imagem</button>
-                <button type="button" (click)="acceptImage()" class="btn btn-success" [ngClass]="{'hide': showControls==false}">Tornar vísivel</button>
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="closeModal()">Fechar apresentação</button>
+            <div class="footer py-4">
+                <button type="button" (click)="rejectImage()" class="btn btn-danger"
+                    [ngClass]="{'hide': showControls==false}">Ocultar imagem</button>
+                <button type="button" (click)="acceptImage()" class="btn btn-success"
+                    [ngClass]="{'hide': showControls==false}">Tornar vísivel</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="closeModal()">Fechar
+                    apresentação</button>
+            </div>
+        </div>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 col-xxl-6 content">
+            <div class="header">
+                <div>Likes recebidos: 100</div>
+                <div class="buttons">
+                    <button class="btn btn-success">Like</button>
+                    <button class="btn btn-primary">Comentar</button>
+                </div>
+            </div>
+
+            <div class="px-3 pt-2">
+                <div class="comment card">
+                    <p class="title">
+                        Criador do comentário
+                    </p>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam voluptates recusandae, optio
+                        quo cupiditate placeat accusantium distinctio. Doloremque nisi quibusdam iste nulla minima?
+                        Cupiditate ex, facilis vel deserunt sit reiciendis!
+                    </p>
+                </div>
             </div>
         </div>
     </div>
