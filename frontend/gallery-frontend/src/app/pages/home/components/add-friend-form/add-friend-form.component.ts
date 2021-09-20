@@ -35,15 +35,13 @@ export class AddFriendFormComponent implements OnInit {
   }
 
   createInvite(username: string): void {
-    console.log('createInvite');
     this.friendService.createFriendInvite(username).subscribe(
       data => {
-        console.log(data);
         this.successMsg = 'Pedido de amizade enviado com sucesso';
         this.errorMsg = '';
       },
       error => {
-        console.log(error);
+        ;
         if (error.status == 406) {
           this.errorMsg = `${error.error.errors}`;
         } else {

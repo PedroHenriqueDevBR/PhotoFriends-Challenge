@@ -57,9 +57,10 @@
                     [hide]="selectedBook.id != null && selectedBook.id != item.id" (click)="selectBook(item)">
                 </app-book-item>
             </div>
-            <app-gallery [images]="selectedBook.images" [hide]="selectedBook.id == null"></app-gallery>
+            <app-gallery [images]="selectedBook.photos" [hide]="selectedBook.id == null"></app-gallery>
         </div>
     </div>
+    
     <div class="friend-container hide-mobile-only">
         <div class="header-friends container py-3">
             <h1 class="title">Meus amigos</h1>

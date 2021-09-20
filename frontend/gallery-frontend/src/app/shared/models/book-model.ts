@@ -1,10 +1,12 @@
+import { PhotoModel } from "./photo-model";
+
 export class BookModel {
     id?: number;
     title: string = '';
     description: string = '';
     cover_image: string = '';
     creator: string = '';
-    images: string[] = [];
+    photos: PhotoModel[] = [];
 
     toCreate(
         title: string,

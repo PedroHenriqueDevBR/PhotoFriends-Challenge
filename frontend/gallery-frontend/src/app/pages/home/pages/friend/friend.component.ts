@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { BookModel } from 'src/app/shared/models/book-model';
 import { PersonModel } from 'src/app/shared/models/person.model';
+import { PhotoModel } from 'src/app/shared/models/photo-model';
+import { BookService } from 'src/app/shared/services/book.service';
 import { FriendService } from 'src/app/shared/services/friend.service';
 import { SpouseService } from 'src/app/shared/services/spouse.service';
 
@@ -20,6 +22,7 @@ export class FriendComponent implements OnInit {
     private friendService: FriendService,
     private spouseService: SpouseService,
     private toast: ToastrService,
+    private bookService: BookService,
   ) { }
 
   ngOnInit(): void {
@@ -40,7 +43,7 @@ export class FriendComponent implements OnInit {
         }
       },
       error => {
-        console.log(error);
+       
       }
     );
   }
@@ -53,28 +56,38 @@ export class FriendComponent implements OnInit {
 
   getBooks(friend: PersonModel): void {
     if (friend.books.length == 0) {
-      let books = [];
-      for (let i: number = 0; i < friend.id!; i++) {
-        const book: BookModel = new BookModel();
-        book.id = i;
-        book.toCreate(
-          `Titulo do book ${i + 1}`,
-          'Descrição do book, Lorem ipsum dolor sit amet consectetur adipisicing elit. Non odio expedita dolore quis perspiciatis tempora, illum vitae magnam ad explicabo ut dolorum eveniet nemo minus inventore pariatur? Accusantium, hic dolores. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Exercitationem molestiae obcaecati error dolores. Possimus voluptatem porro cumque minus laborum nisi obcaecati tempora. Nulla possimus deleniti similique ut dolores impedit doloribus.',
-          'https://images.pexels.com/photos/3565370/pexels-photo-3565370.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
-          'Pedro Henrique',
-        );
-        for (let j: number = 0; j < i + 1; j++) {
-          book.images.push('https://images.pexels.com/photos/3565370/pexels-photo-3565370.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940');
+      this.bookService.booksFromFriendByID(friend.id!).subscribe(
+        data => {
+          console.log(data);
+          data.forEach(book => {
+            book.cover_image = 'http://localhost:8000' + book.cover_image;
+            book.photos.forEach(photo => {
+              photo.url = 'http://localhost:8000' + photo.url;
+            });
+          });
+          friend.books = data;
         }
-        books.push(book);
-      }
-      friend.books = books;
+      )
+      // let books = [];
+      // for (let i: number = 0; i < friend.id!; i++) {
+      //   const book: BookModel = new BookModel();
+      //   book.id = i;
+      //   book.toCreate(
+      //     `Titulo do book ${i + 1}`,
+      //     'Descrição do book, Lorem ipsum dolor sit amet consectetur adipisicing elit. Non odio expedita dolore quis perspiciatis tempora, illum vitae magnam ad explicabo ut dolorum eveniet nemo minus inventore pariatur? Accusantium, hic dolores. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Exercitationem molestiae obcaecati error dolores. Possimus voluptatem porro cumque minus laborum nisi obcaecati tempora. Nulla possimus deleniti similique ut dolores impedit doloribus.',
+      //     'https://images.pexels.com/photos/3565370/pexels-photo-3565370.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
+      //     'Pedro Henrique',
+      //   );
+      //   for (let j: number = 0; j < i + 1; j++) {
+      //     book.images.push(new PhotoModel('https://images.pexels.com/photos/3565370/pexels-photo-3565370.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'));
+      //   }
+      //   books.push(book);
+      // }
+      // friend.books = books;
     }
   }
 
   selectBook(book: BookModel): void {
-    console.log('Galeria selecionada');
-    console.log(book.id);
     if (this.selectedBook.id == book.id) {
       this.selectedBook = new BookModel();
       return;
@@ -83,14 +96,12 @@ export class FriendComponent implements OnInit {
   }
 
   requestSpouse(id: number): void {
-    console.log('requestSpouse');
     this.spouseService.createSpouseInvite(id).subscribe(
       data => {
-        console.log(data);
         this.toast.success('Pedido enviado');
       },
       error => {
-        console.log(error);
+        ;
         if (error.status == 406) {
           for (var item of error.error.errors) {
             this.toast.error(item);

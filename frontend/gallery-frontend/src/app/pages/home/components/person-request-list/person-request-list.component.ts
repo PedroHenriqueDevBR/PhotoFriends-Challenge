@@ -28,7 +28,6 @@ export class PersonRequestListComponent implements OnInit {
   getSpouseRequests(): void {
     this.spouseService.getMySpouseInvitations().subscribe(
       data => {
-        console.log(data);
         for (var item of data as Array<any>) {
           const requester = item.requester;
           let person = new PersonModel();
@@ -41,7 +40,7 @@ export class PersonRequestListComponent implements OnInit {
         }
       },
       error => {
-        console.log(error);
+       
       }
     );
   }
@@ -61,7 +60,7 @@ export class PersonRequestListComponent implements OnInit {
         }
       },
       error => {
-        console.log(error);
+       
       }
     );
   }
@@ -81,7 +80,7 @@ export class PersonRequestListComponent implements OnInit {
         this.toast.success('Pedido de amizade aceito');
       },
       error => {
-        console.log(error);
+       
       }
     )
   }
@@ -93,7 +92,7 @@ export class PersonRequestListComponent implements OnInit {
         this.toast.success('Pedido de amizade recusado');
       },
       error => {
-        console.log(error);
+       
       }
     )
   }
@@ -139,7 +138,7 @@ export class PersonRequestListComponent implements OnInit {
         this.toast.success('Pedido de cônjuge recusado');
       },
       error => {
-        console.log(error);
+       
       }
     )
   }

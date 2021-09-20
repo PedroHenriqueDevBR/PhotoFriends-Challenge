@@ -2,8 +2,10 @@
     <div class="timeline-container">
         <div class="timeline-list">
             <app-person-request-list class="show-mobile-only"></app-person-request-list>
-            
-                <app-book-item *ngFor="let item of books" [book]="item"></app-book-item>
+            <app-book-item *ngFor="let item of books" [book]="item"></app-book-item>
+            <p class="subtitle card p-5 mt-1" style="width: max-content;" [ngClass]="{'hide': books.length > 0}">
+                Nenhum dado para ser apresentado.
+            </p>
         </div>
     </div>
     <div class="requests hide-mobile-only">

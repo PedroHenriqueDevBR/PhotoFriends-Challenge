@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { PhotoModel } from 'src/app/shared/models/photo-model';
 
 @Component({
   selector: 'app-gallery',
@@ -8,7 +9,7 @@ import { Component, Input, OnInit } from '@angular/core';
 export class GalleryComponent implements OnInit {
 
   @Input()
-  images:string[] = [];
+  images:PhotoModel[] = [];
 
   @Input()
   hide: boolean = true;
