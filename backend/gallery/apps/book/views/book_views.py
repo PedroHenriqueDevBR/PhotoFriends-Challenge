@@ -82,13 +82,30 @@ class FriendBooksAll(APIView):
     name = 'friend-books-all'
     permission_classes = [IsAuthenticated]
 
+    # TODO: BUG (Está retornando as fotos escondidas)
     def get(self, request):
-        # TODO: BUG (Está retornando as fotos escondidas)
         books = []
         friends = request.user.person.friends.all()
         for friend in friends:
             books.extend(friend.books.all())
-        order = lambda x: x.id
-        response = sorted(books, key=order, reverse=True)
+        response = sorted(books, key=lambda x: x.id, reverse=True)
         serializer = BookSerializer(response, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+
+
+class FriendPhotosFromBooksAll(APIView):
+    name = 'friend-books-all'
+    permission_classes = [IsAuthenticated]
+
+    # Todas as imagens visiveis de um book
+    def get(self, request, pk):
+        try:
+            person = request.user.person
+            book = Book.objects.get(pk=pk)
+            assert(book.created_at == person or person in book.created_at.friends.all())
+        except:
+            return Response(status=status.HTTP_404_NOT_FOUND)
+        
+        photos = book.photos.filter(acepted=True)
+        serializer = PhotoSerializer(photos)
         return Response(serializer.data, status=status.HTTP_200_OK)

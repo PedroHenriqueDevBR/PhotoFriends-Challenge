@@ -1,4 +1,4 @@
-from rest_framework.serializers import ModelSerializer
+from rest_framework.serializers import ModelSerializer, SerializerMethodField
 from apps.core.models import Photo
 
 class PhotoSerializer(ModelSerializer):

@@ -22,6 +22,7 @@ export class GalleryComponent implements OnInit {
   }
 
   selectImage(image: string): void {
+    console.log('Imagem selecionada');
     this.selectedImage = image;
   }
 

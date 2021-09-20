@@ -22,3 +22,17 @@ class BookSerializer(ModelSerializer):
             'creator',
             'photos',
         ]
+
+class BookFriendSerializer(ModelSerializer):
+    creator = SlugRelatedField(many=False, read_only=True, slug_field='name')
+
+    class Meta:
+        model = Book
+        fields = [
+            'id',
+            'title',
+            'description',
+            'cover_image',
+            'created_at',
+            'creator',
+        ]
