@@ -57,6 +57,7 @@ export class BookComponent implements OnInit {
   closePhotoFormModal(): void {
     this.hidePhotoFormModal = true;
     this.getBooks();
+    this.selectedBook = new BookModel();
   }
 
 }

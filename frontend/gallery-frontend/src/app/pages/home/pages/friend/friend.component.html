@@ -57,6 +57,14 @@
                     [hide]="selectedBook.id != null && selectedBook.id != item.id" (click)="selectBook(item)">
                 </app-book-item>
             </div>
+            <div class="gallery p-4" [ngClass]="{'hide': selectedBook.id == null}">
+                <div class="header p-3">
+                    <p class="title">Galeria de fotos</p>
+                    <button class="btn btn-primary-color" (click)="openPhotoFormModal()">
+                        <i class="fas fa-plus"></i> Foto
+                    </button>
+                </div>
+            </div>
             <app-gallery [images]="selectedBook.photos" [hide]="selectedBook.id == null"></app-gallery>
         </div>
     </div>
@@ -78,3 +86,4 @@
 </main>
 
 <app-add-friend-form [hide]="hideFriendFormModal" (emitClose)="closeFriendFormModal()"></app-add-friend-form>
+<app-add-photo-form [hide]="hidePhotoFormModal" (emitClose)="closePhotoFormModal()" [book]="selectedBook!"></app-add-photo-form>

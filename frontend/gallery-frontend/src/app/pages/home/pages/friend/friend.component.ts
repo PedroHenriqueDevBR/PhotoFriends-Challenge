@@ -17,6 +17,7 @@ export class FriendComponent implements OnInit {
   selectedFriend: PersonModel = new PersonModel();
   selectedBook: BookModel = new BookModel();
   hideFriendFormModal: boolean = true;
+  hidePhotoFormModal: boolean = true;
 
   constructor(
     private friendService: FriendService,
@@ -32,6 +33,7 @@ export class FriendComponent implements OnInit {
   getFriends(): void {
     this.friendService.getMyFriends().subscribe(
       data => {
+        this,this.friends = [];
         for (var item of data as Array<any>) {
           let person = new PersonModel();
           person.id = item.id;
@@ -105,5 +107,14 @@ export class FriendComponent implements OnInit {
     this.hideFriendFormModal = true;
   }
 
+  openPhotoFormModal(): void {
+    this.hidePhotoFormModal = false;
+  }
+
+  closePhotoFormModal(): void {
+    this.hidePhotoFormModal = true;
+    this.getFriends();
+    this.selectedBook = new BookModel();
+  }
 
 }
