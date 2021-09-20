@@ -91,7 +91,7 @@ Por favor, crie um site que atenda às suas necessidades. Você deve usar python
  - [X] Acessar perfil de um amigo
  - [X] Acessar Book de um amigo
  - [X] Adicionar Imagem no Book do amigo
- - [ ] Aceitar ou recusar imagem adicionada por um amigo (criador(ar) ou cônjuge)
+ - [X] Aceitar ou recusar imagem adicionada por um amigo (criador(ar) ou cônjuge)
  - [ ] Comentar a foto de um amigo
  - [ ] Listar todos os comentários de uma imagem
  - [ ] Remover o comentário (se feito por mim ou pelo dono da foto)
