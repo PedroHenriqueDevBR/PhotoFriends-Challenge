@@ -10,7 +10,7 @@ import { LoginResponseModel } from '../models/login_response.model';
 })
 export class UserService {
 
-  private BASE_URL: string = 'http://127.0.0.1:8000/';
+  private BASE_URL: string = '/server/';
   private JWT_KEY: string = 'jwt';
 
   constructor(private http: HttpClient) { }

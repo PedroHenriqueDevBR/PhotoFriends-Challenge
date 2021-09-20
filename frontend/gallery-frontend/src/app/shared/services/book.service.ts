@@ -8,7 +8,7 @@ import { BookModel } from '../models/book-model';
 })
 export class BookService {
 
-  private BASE_URL: string = 'http://127.0.0.1:8000/book/';
+  private BASE_URL: string = '/server/book/';
   private JWT_KEY: string = 'jwt';
 
   constructor(

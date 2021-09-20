@@ -61,9 +61,9 @@ export class FriendComponent implements OnInit {
       this.bookService.booksFromFriendByID(friend.id!).subscribe(
         data => {
           data.forEach(book => {
-            book.cover_image = 'http://localhost:8000' + book.cover_image;
+            book.cover_image = '/server' + book.cover_image;
             book.photos.forEach(photo => {
-              photo.url = 'http://localhost:8000' + photo.url;
+              photo.url = '/server' + photo.url;
             });
           });
           friend.books = data;

@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class SpouseService {
 
-  private BASE_URL: string = 'http://127.0.0.1:8000/user/spouse/';
+  private BASE_URL: string = '/server/spouse/';
   private JWT_KEY: string = 'jwt';
 
   constructor(private http: HttpClient) { }

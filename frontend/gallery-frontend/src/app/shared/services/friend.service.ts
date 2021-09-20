@@ -8,7 +8,7 @@ import { PersonModel } from '../models/person.model';
 })
 export class FriendService {
 
-  private BASE_URL: string = 'http://127.0.0.1:8000/user/friend/';
+  private BASE_URL: string = '/server/user/friend/';
   private JWT_KEY: string = 'jwt';
 
   constructor(private http: HttpClient) { }

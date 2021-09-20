@@ -23,7 +23,7 @@ export class TimelineComponent implements OnInit {
     this.bookService.allBooksFromMyFriends().subscribe(
       data => {
         data.forEach(el => {
-          el.cover_image = 'http://localhost:8000' + el.cover_image;
+          el.cover_image = '/server' + el.cover_image;
         });
         this.books.push(...data);
       },

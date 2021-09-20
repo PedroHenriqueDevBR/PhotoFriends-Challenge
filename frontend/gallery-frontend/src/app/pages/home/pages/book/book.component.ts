@@ -29,9 +29,9 @@ export class BookComponent implements OnInit {
     this.bookService.booksFromLoggedUser().subscribe(
       data => {
         data.forEach(book => {
-          book.cover_image = 'http://localhost:8000' + book.cover_image;
+          book.cover_image = '/server' + book.cover_image;
           book.photos.forEach(photo => {
-            photo.url = 'http://localhost:8000' + photo.url;
+            photo.url = '/server' + photo.url;
           });
         });
         this.books = [];
