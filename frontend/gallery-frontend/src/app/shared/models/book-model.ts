@@ -19,4 +19,24 @@ export class BookModel {
         this.cover_image = cover_image;
         this.creator = creator;
     }
+
+    noAcceptedImages(): PhotoModel[] {
+        let response: PhotoModel[] = [];
+        for (let photo of this.photos) {
+            if (photo.acepted == false) {
+                response.push(photo);
+            }
+        }
+        return response;
+    }
+
+    acceptedImages(): PhotoModel[] {
+        let response: PhotoModel[] = [];
+        for (let photo of this.photos) {
+            if (photo.acepted == true) {
+                response.push(photo);
+            }
+        }
+        return response;
+    }
 }

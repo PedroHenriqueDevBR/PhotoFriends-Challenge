@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BookModel } from 'src/app/shared/models/book-model';
+import { PhotoModel } from 'src/app/shared/models/photo-model';
 import { BookService } from 'src/app/shared/services/book.service';
 
 @Component({
@@ -13,6 +14,8 @@ export class BookComponent implements OnInit {
   hidePhotoFormModal: boolean = true;
   books: BookModel[] = [];
   selectedBook: BookModel = new BookModel();
+  aceptPhotos: PhotoModel[] = [];
+  pendingPhotos: PhotoModel[] = [];
 
   constructor(
     private bookService: BookService,
@@ -38,8 +41,12 @@ export class BookComponent implements OnInit {
   }
 
   selectBook(book: BookModel) {
-    console.log('Book selecionado');
     this.selectedBook = book;
+    this.pendingPhotos = [];
+    this.pendingPhotos = [];
+    this.pendingPhotos.push(...book.photos.filter(el => el.acepted == false));
+    this.aceptPhotos = [];
+    this.aceptPhotos.push(...book.photos.filter(el => el.acepted == true));
   }
 
   openBookFormModal(): void {

@@ -22,7 +22,7 @@
             <p class="subtitle">{{ selectedBook.description }}</p>
         </div>
 
-        <div class="gallery p-4" [ngClass]="{'hide': selectedBook.id == null}">
+        <div class="gallery p-4" [ngClass]="{'hide': selectedBook.id == null}">            
             <div class="header p-3">
                 <p class="title">Galeria de fotos</p>
                 <button class="btn btn-primary-color" (click)="openPhotoFormModal()">
@@ -30,7 +30,14 @@
                 </button>
             </div>
             <div class="photo-container">
-                <app-gallery [images]="selectedBook.photos" [hide]="false"></app-gallery>
+                <app-gallery [bookId]="selectedBook.id" [images]="aceptPhotos" [hide]="false" [hideImages]="false"></app-gallery>
+            </div>
+
+            <div class="header p-3">
+                <p class="title">Pendentes de autorização</p>
+            </div>
+            <div class="photo-container">
+                <app-gallery (emitClose)="getBooks()" [bookId]="selectedBook.id!" [images]="pendingPhotos" [hide]="false" [hideImages]="false"></app-gallery>
             </div>
         </div>
     </div>

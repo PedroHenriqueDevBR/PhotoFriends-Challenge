@@ -50,6 +50,10 @@
     align-items: center;
 }
 
+.pending {
+    border: 5px solid #fc9f25;
+}
+
 .hide-image {
     display: none;
 }

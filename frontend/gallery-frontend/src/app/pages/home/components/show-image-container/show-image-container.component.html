@@ -1,0 +1,18 @@
+<div class="show-image-container" [ngClass]="{'hide': hide}">
+    <div class="modal-dialog modal-xl modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+                    (click)="closeModal()"></button>
+            </div>
+            <div class="modal-body">
+                <img src="{{photo.url}}" alt="show">
+            </div>
+            <div class="modal-footer">
+                <button type="button" (click)="rejectImage()" class="btn btn-danger" [ngClass]="{'hide': showControls==false}">Ocultar imagem</button>
+                <button type="button" (click)="acceptImage()" class="btn btn-success" [ngClass]="{'hide': showControls==false}">Tornar vísivel</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="closeModal()">Fechar apresentação</button>
+            </div>
+        </div>
+    </div>
+</div>

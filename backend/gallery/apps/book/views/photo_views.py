@@ -41,7 +41,7 @@ class BookRequestImage(APIView):
             return Response(status=status.HTTP_404_NOT_FOUND)
 
         try:
-            assert len(request.user.person.books.filter(pk=pk)) > 0 or len(request.user.person.spouse.books.filter(pk=pk)) > 0
+            assert(len(request.user.person.books.filter(pk=pk)) > 0 or len(request.user.person.spouse.books.filter(pk=pk)) > 0)
         except:
             return Response(status=status.HTTP_401_UNAUTHORIZED)
 
@@ -59,7 +59,7 @@ class BookRequestImage(APIView):
             return Response(status=status.HTTP_404_NOT_FOUND)
 
         try:
-            assert len(request.user.person.books.filter(pk=pk)) > 0 or len(request.user.person.spouse.books.filter(pk=pk)) > 0
+            assert(len(request.user.person.books.filter(pk=pk)) > 0 or len(request.user.person.spouse.books.filter(pk=pk)) > 0)
         except:
             return Response(status=status.HTTP_401_UNAUTHORIZED)
 

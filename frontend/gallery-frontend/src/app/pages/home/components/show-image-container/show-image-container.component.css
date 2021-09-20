@@ -1,0 +1,51 @@
+.show-image-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #0008;
+}
+
+.modal-dialog {
+    width: 100%;
+    max-height: 100vh;
+}
+
+.modal-dialog img {
+    width: 100%;
+}
+
+.modal-body {
+    padding: 0;
+    height: 60vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgb(49, 49, 49);
+}
+
+.modal-body img {
+    width: auto;
+    max-height: 100%;
+}
+
+.modal-footer {
+    display: flex;
+    justify-content: center;
+}
+
+@media only screen and (max-width: 950px) {
+    .modal-body {
+        padding: 0;
+        height: 30vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: rgb(49, 49, 49);
+    }
+}
+
+.hide {
+    display: none;
+}

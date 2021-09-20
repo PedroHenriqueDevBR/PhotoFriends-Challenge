@@ -20,7 +20,6 @@ export class PhotoService {
   }
 
   public addPhoto(bookId: number, formData: FormData): Observable<any> {
-    // TODO: Ainda não testado
     return this.http.post(
       `${this.BASE_URL}${bookId}/photos`,
       formData,
@@ -29,24 +28,22 @@ export class PhotoService {
   }
 
   public peddingPhotos(bookId: number): Observable<PhotoModel[]> {
-    // TODO: Ainda não testado
     return this.http.get<PhotoModel[]>(
       `${this.BASE_URL}${bookId}/photos/pending`,
       { headers: this.getHeader() }
     );
   }
 
-  public acceptPhoto(bookId: number, photoId: number): Observable<PhotoModel[]> {
-    // TODO: Ainda não testado
-    return this.http.put<PhotoModel[]>(
+  public acceptPhoto(bookId: number, photoId: number): Observable<any> {
+    return this.http.put(
       `${this.BASE_URL}${bookId}/photos/${photoId}`,
+      {},
       { headers: this.getHeader() }
     );
   }
 
-  public rejectPhoto(bookId: number, photoId: number): Observable<PhotoModel[]> {
-    // TODO: Ainda não testado
-    return this.http.delete<PhotoModel[]>(
+  public rejectPhoto(bookId: number, photoId: number): Observable<any> {
+    return this.http.delete(
       `${this.BASE_URL}${bookId}/photos/${photoId}`,
       { headers: this.getHeader() }
     );
