@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { PhotoModel } from 'src/app/shared/models/photo-model';
+import { MetadataImageService } from 'src/app/shared/services/metadata-image.service';
 import { PhotoService } from 'src/app/shared/services/photo.service';
 
 @Component({
@@ -24,12 +25,21 @@ export class ShowImageContainerComponent implements OnInit {
   @Output()
   emitClose = new EventEmitter();
 
+  likes: number = 0;
+
   constructor(
     private photoService: PhotoService,
     private toast: ToastrService,
-  ) { }
+    private metadataService: MetadataImageService,
+  ) {
+    
+  }
 
   ngOnInit(): void {
+  }
+
+  ngOnChanges() {
+    this.getLikes(this.photo.id!);
   }
 
   closeModal(): void {
@@ -38,9 +48,6 @@ export class ShowImageContainerComponent implements OnInit {
   }
 
   acceptImage() {
-    console.log('Passou aqui (Aceitou)');
-    console.log(this.bookId);
-    console.log(this.photo.id);
     if (this.photo.acepted) {
       this.toast.warning('A imagem já está disponível para visualizalção');
       return;
@@ -50,9 +57,7 @@ export class ShowImageContainerComponent implements OnInit {
         this.toast.success('Alteração realizada');
         this.closeModal();
       },
-      error => {
-        console.log(error);
-      }
+      error => {}
     );
   }
 
@@ -66,9 +71,26 @@ export class ShowImageContainerComponent implements OnInit {
         this.toast.success('Alteração realizada');
         this.closeModal();
       },
-      error => {
-        console.log(error);
-      }
+      error => {}
+    );
+  }
+
+  addLike() {
+    this.metadataService.addLike(this.photo.id!).subscribe(
+      data => {
+        this.toast.success('Like registrado');
+        this.likes++;
+      },
+      error => {}
+    );
+  }
+
+  getLikes(photoId: number) {
+    this.metadataService.getLikesFromPhoto(this.photo.id!).subscribe(
+      data => {
+        this.likes = data.length;
+      },
+      error => {}
     );
   }
 

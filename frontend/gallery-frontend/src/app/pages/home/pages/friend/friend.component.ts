@@ -60,7 +60,6 @@ export class FriendComponent implements OnInit {
     if (friend.books.length == 0) {
       this.bookService.booksFromFriendByID(friend.id!).subscribe(
         data => {
-          console.log(data);
           data.forEach(book => {
             book.cover_image = 'http://localhost:8000' + book.cover_image;
             book.photos.forEach(photo => {

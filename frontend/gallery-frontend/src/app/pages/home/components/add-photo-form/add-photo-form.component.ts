@@ -39,9 +39,7 @@ export class AddPhotoFormComponent implements OnInit {
           this.toast.success('Foto adicionada');
           this.closeModal();
         },
-        error => {
-          console.log(error);
-        }
+        error => {}
       );
     } else {
       this.toast.warning('Nenhuma imagem selecionada');

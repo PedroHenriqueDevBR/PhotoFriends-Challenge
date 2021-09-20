@@ -20,9 +20,9 @@
         </div>
         <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 col-xxl-6 content">
             <div class="header">
-                <div>Likes recebidos: 100</div>
+                <div>Likes recebidos: {{likes}}</div>
                 <div class="buttons">
-                    <button class="btn btn-success">Like</button>
+                    <button class="btn btn-success" (click)="addLike()">Like</button>
                     <button class="btn btn-primary">Comentar</button>
                 </div>
             </div>

@@ -50,9 +50,7 @@ export class AddBookFormComponent implements OnInit {
       data => {
         this.toast.success('Galeria criada');
       },
-      error => {
-        console.log(error);
-      }
+      error => {}
     )
 
   }
