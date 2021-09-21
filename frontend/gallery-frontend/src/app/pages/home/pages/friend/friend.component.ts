@@ -2,10 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { BookModel } from 'src/app/shared/models/book-model';
 import { PersonModel } from 'src/app/shared/models/person.model';
-import { PhotoModel } from 'src/app/shared/models/photo-model';
 import { BookService } from 'src/app/shared/services/book.service';
 import { FriendService } from 'src/app/shared/services/friend.service';
 import { SpouseService } from 'src/app/shared/services/spouse.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-friend',
@@ -60,23 +60,22 @@ export class FriendComponent implements OnInit {
   }
 
   getBooks(friend: PersonModel): void {
-    if (friend.books.length == 0) {
-      this.bookService.booksFromFriendByID(friend.id!).subscribe(
-        data => {
-          data.forEach(book => {
-            book.cover_image = '/server' + book.cover_image;
-            book.photos.forEach(photo => {
-              photo.url = '/server' + photo.url;
-            });
+    this.bookService.booksFromFriendByID(friend.id!).subscribe(
+      data => {
+        data.forEach(book => {
+          book.cover_image = environment.API + book.cover_image;
+          book.photos.forEach(photo => {
+            photo.url = environment.API + photo.url;
           });
-          friend.books = data;
-        }
-      )
-    }
+        });
+        friend.books = [];
+        friend.books.push(...data);
+      }
+    );
   }
 
   selectBook(book: BookModel): void {
-    if (this.selectedBook.id == book.id) {
+    if (this.selectedBook.id === book.id) {
       this.selectedBook = new BookModel();
       return;
     }
@@ -116,7 +115,7 @@ export class FriendComponent implements OnInit {
   closePhotoFormModal(): void {
     this.hidePhotoFormModal = true;
     this.getFriends();
-    this.selectedBook = new BookModel();
+    this.getBooks(this.selectedFriend);
   }
 
 }

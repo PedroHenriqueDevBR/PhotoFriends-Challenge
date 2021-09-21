@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BookModel } from 'src/app/shared/models/book-model';
 import { BookService } from 'src/app/shared/services/book.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-timeline',
@@ -25,9 +26,9 @@ export class TimelineComponent implements OnInit {
     this.bookService.allBooksFromMyFriends().subscribe(
       data => {
         data.forEach(el => {
-          el.cover_image = '/server' + el.cover_image;
+          el.cover_image = environment.API + el.cover_image;
           for (let photo of el.photos) {
-            photo.url = '/server' + photo.url;
+            photo.url = environment.API + photo.url;
           }
         });
         this.books.push(...data);

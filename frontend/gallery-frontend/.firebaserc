@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "amigogaleria": {
+      "hosting": {
+        "gallery-frontend": [
+          "amigogaleria"
+        ]
+      }
+    }
+  }
+}
