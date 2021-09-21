@@ -1,0 +1,11 @@
+{
+	"folders": [
+		{
+			"path": "backend/gallery"
+		},
+		{
+			"path": "frontend/gallery-frontend"
+		}
+	],
+	"settings": {}
+}

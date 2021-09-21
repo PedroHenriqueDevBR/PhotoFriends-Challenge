@@ -14,6 +14,8 @@
                     [ngClass]="{'hide': showControls==false}">Ocultar imagem</button>
                 <button type="button" (click)="acceptImage()" class="btn"
                     [ngClass]="{'hide': showControls==false}">Tornar vísivel</button>
+                <button type="button" (click)="deleteImage()" class="btn"
+                    [ngClass]="{'hide': showControls==false}">Deletar</button>
                 <button type="button" class="btn" data-bs-dismiss="modal" (click)="closeModal()">Fechar
                     apresentação</button>
             </div>

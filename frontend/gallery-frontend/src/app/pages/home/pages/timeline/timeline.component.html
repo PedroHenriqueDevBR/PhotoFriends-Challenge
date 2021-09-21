@@ -6,12 +6,12 @@
             <app-book-item *ngFor="let item of books" [book]="item" (click)="selectBook(item)"
                 [hide]="selectedBook.id != null && selectedBook.id != item.id"></app-book-item>
 
-            <p class="subtitle card p-5 mt-1" style="width: max-content;" [ngClass]="{'hide': books.length > 0}">
+            <p class="subtitle card px-3 py-3 mt-1" style="width: 100%;" [ngClass]="{'hide': books.length > 0}">
                 Nenhum dado para ser apresentado.
             </p>
 
-            <div class="info p-2">
-                <div class="gallery p-4" [ngClass]="{'hide': selectedBook.id == null}">
+            <div class="info p-2" [ngClass]="{'hide': selectedBook.id == null}">
+                <div class="gallery p-4">
                     <div class="header p-3">
                         <p class="title">Galeria de fotos</p>
                         <button class="btn btn-primary-color" (click)="openPhotoFormModal()">

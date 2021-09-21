@@ -34,6 +34,9 @@ export class GalleryComponent implements OnInit {
   @Output()
   reject = new EventEmitter();
 
+  @Output()
+  delete = new EventEmitter();
+
   selectedImage: PhotoModel = new PhotoModel('');
 
   constructor() { }
@@ -59,13 +62,15 @@ export class GalleryComponent implements OnInit {
   }
 
   acceptImage(photo: PhotoModel): void {
-    console.log('accept galley');
     this.accept.emit(photo);
   }
 
   rejectImage(photo: PhotoModel): void {
-    console.log('reject galley');
     this.reject.emit(photo);
+  }
+
+  deleteImage(photo: PhotoModel): void {
+    this.delete.emit(photo);
   }
   
 }

@@ -49,6 +49,13 @@ export class PhotoService {
     );
   }
 
+  public deletePhoto(photoId: number): Observable<any> {
+    return this.http.delete(
+      `${this.BASE_URL}photo/${photoId}/delete/`,
+      { headers: this.getHeader() }
+    );
+  }
+
   private getJWTKey(): string {
     return 'Bearer ' + localStorage.getItem(this.JWT_KEY) || '';
   }

@@ -79,7 +79,7 @@ export class BookComponent implements OnInit {
   closePhotoFormModal(event: any): void {
     if (event == true) {
       let updatedID = this.selectedBook.id!;
-      this.resetBookData(updatedID);
+      // this.resetBookData(updatedID);
     }
     this.hidePhotoFormModal = true;
   }
@@ -92,7 +92,6 @@ export class BookComponent implements OnInit {
   }
 
   acceptImage(photo: PhotoModel | undefined) {
-    console.log('acceptImage');
     if (photo != undefined) {
       if (photo!.acepted) {
         this.toast.warning('A imagem já está disponível para visualizalção');
@@ -114,7 +113,6 @@ export class BookComponent implements OnInit {
   }
 
   rejectImage(photo: PhotoModel | undefined) {
-    console.log('rejectImage');
     if (photo != undefined) {
       if (!photo!.acepted) {
         this.toast.warning('A imagem já está oculta');
@@ -128,6 +126,25 @@ export class BookComponent implements OnInit {
             photo.acepted = false;
             this.aceptPhotos.splice(index, 1);
             this.pendingPhotos.push(photo);
+          }
+        },
+        error => {}
+      );
+    }
+  }
+
+  deleteImage(photo: PhotoModel | undefined) {
+    if (photo != undefined) {
+      this.photoService.deletePhoto(photo.id!).subscribe(
+        data => {
+          this.toast.success('Imagem deletada');
+          let acceptedIndex = this.aceptPhotos.findIndex(el => el.id == photo.id);
+          let pedingIndex = this.pendingPhotos.findIndex(el => el.id == photo.id);
+          if (acceptedIndex >= 0) {
+            this.aceptPhotos.splice(acceptedIndex, 1);
+          }
+          if (pedingIndex >= 0) {
+            this.aceptPhotos.splice(pedingIndex, 1);
           }
         },
         error => {}

@@ -30,6 +30,9 @@ export class ShowImageContainerComponent implements OnInit {
 
   @Output()
   emitReject = new EventEmitter();
+
+  @Output()
+  emitDelete = new EventEmitter();
   
   comments: CommentModel[] = [];
   hideCommentFormModal: boolean = true;
@@ -101,14 +104,17 @@ export class ShowImageContainerComponent implements OnInit {
   }
 
   acceptImage() {
-    console.log('accept show-image-container');
     this.emitAcept.emit(this.photo);
     this.closeModal();
   }
 
   rejectImage() {
-    console.log('reject show-image-container');
     this.emitReject.emit(this.photo);
+    this.closeModal();
+  }
+
+  deleteImage() {
+    this.emitDelete.emit(this.photo);
     this.closeModal();
   }
 
