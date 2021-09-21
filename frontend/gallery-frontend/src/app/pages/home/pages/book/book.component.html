@@ -2,9 +2,8 @@
     <div class="accordion show-mobile-only" id="accordionRequests">
         <div class="accordion-item">
             <h2 class="accordion-header" id="headingTwo">
-                <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo" 
-                    [ngClass]="{'collapsed': !showAccordion}"
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo"
+                    aria-expanded="false" aria-controls="collapseTwo" [ngClass]="{'collapsed': !showAccordion}"
                     (click)="showAccordion = true">
                     Minhas galerias
                 </button>
@@ -25,10 +24,14 @@
     </div>
 
     <div class="selected-book card">
+
+        <h5 class="no-content" [ngClass]="{'hide': selectedBook.id != null}">Nenhuma galeria selecionada <br>selecione uma galeria do lado direito da página para mais
+            detalhes</h5>
+
         <div class="cover-image"
             style="background-image: url({{selectedBook.cover_image}}); background-size: cover; background-repeat: no-repeat; width: 100%; border-top-right-radius: 8px;">
         </div>
-        <div class="container p-4">
+        <div class="container info p-4">
             <h1 class="title">{{ selectedBook.title }}</h1>
             <p class="subtitle">{{ selectedBook.description }}</p>
         </div>
