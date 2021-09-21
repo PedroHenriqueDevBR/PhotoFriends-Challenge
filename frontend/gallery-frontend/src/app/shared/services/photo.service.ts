@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 import { PhotoModel } from '../models/photo-model';
 
 @Injectable({
@@ -8,7 +9,7 @@ import { PhotoModel } from '../models/photo-model';
 })
 export class PhotoService {
 
-  private BASE_URL: string = '/server/book/';
+  private BASE_URL: string = `${environment.API}/book/`;
   private JWT_KEY: string = 'jwt';
 
   constructor(

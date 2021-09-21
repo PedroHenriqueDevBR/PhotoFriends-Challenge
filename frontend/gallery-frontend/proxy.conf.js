@@ -1,8 +1,9 @@
 const PROXY_CONFIG = [
     {
         context: ['/server'],
-        target: 'http://localhost:8000/',
-        secure: false,
+        target: 'https://minhagaleria.herokuapp.com',
+        secure: true,
+        changeOrigin: true,
         logLevel: 'debug',
         pathRewrite: { '^/server': '' }
     }

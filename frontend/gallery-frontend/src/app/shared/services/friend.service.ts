@@ -1,14 +1,14 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { PersonModel } from '../models/person.model';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FriendService {
 
-  private BASE_URL: string = '/server/user/friend/';
+  private BASE_URL: string = `${environment.API}/user/friend/`;
   private JWT_KEY: string = 'jwt';
 
   constructor(private http: HttpClient) { }

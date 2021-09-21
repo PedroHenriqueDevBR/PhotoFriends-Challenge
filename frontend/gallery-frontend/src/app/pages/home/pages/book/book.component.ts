@@ -4,6 +4,7 @@ import { BookModel } from 'src/app/shared/models/book-model';
 import { PhotoModel } from 'src/app/shared/models/photo-model';
 import { BookService } from 'src/app/shared/services/book.service';
 import { PhotoService } from 'src/app/shared/services/photo.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-book',
@@ -35,9 +36,9 @@ export class BookComponent implements OnInit {
       data => {
         // console.table(data);
         data.forEach(book => {
-          book.cover_image = '/server' + book.cover_image;
+          book.cover_image = environment.API + book.cover_image;
           book.photos.forEach(photo => {
-            photo.url = '/server' + photo.url;
+            photo.url = environment.API + photo.url;
           });
         });
         this.books = [];

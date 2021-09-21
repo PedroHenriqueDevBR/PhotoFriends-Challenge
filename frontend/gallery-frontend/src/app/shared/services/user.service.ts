@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { PersonModel } from '../models/person.model';
 import { Observable } from 'rxjs';
-import { LoginResponseModel } from '../models/login_response.model';
+import { environment } from 'src/environments/environment';
 
 
 @Injectable({
@@ -10,7 +10,7 @@ import { LoginResponseModel } from '../models/login_response.model';
 })
 export class UserService {
 
-  private BASE_URL: string = '/server/';
+  private BASE_URL: string = `${environment.API}/`;
   private JWT_KEY: string = 'jwt';
 
   constructor(private http: HttpClient) { }

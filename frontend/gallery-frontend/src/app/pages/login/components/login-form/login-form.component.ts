@@ -43,6 +43,8 @@ export class LoginFormComponent implements OnInit {
       (error) => {
         if (error['status'] == 401) {
           this.toast.error('Usuário ou senha incorreta');
+        } else {
+          console.log(error);
         }
       }
     );

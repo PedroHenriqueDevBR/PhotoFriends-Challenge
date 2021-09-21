@@ -68,7 +68,8 @@
                     </button>
                 </div>
             </div>
-            <app-gallery [images]="selectedBook.photos" [hide]="selectedBook.id == null" [showControls]="false"></app-gallery>
+            <app-gallery [images]="selectedBook.photos" [hide]="false" [hideImages]="true"
+            [showControls]="false"></app-gallery>
         </div>
     </div>
     
