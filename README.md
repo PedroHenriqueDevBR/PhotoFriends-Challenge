@@ -67,7 +67,7 @@ A modelagem foi criada antes de iniciar o desenvolvimento da aplicação, com o 
 <img width="100%" src="https://raw.githubusercontent.com/PedroHenriqueDevBR/desafio-galeria-fullstack/main/docs/models/database.png" />
 
 <br>
-<h2 id="modelagem-mapa-aplicacao">Pŕototipo da aplicação</h2>
+<h2 id="modelagem-mapa-aplicacao">Protótipo da aplicação</h2>
 
 <img width="100%" src="https://raw.githubusercontent.com/PedroHenriqueDevBR/PhotoFriends-Challenge/main/docs/prototype/prototype.png" />
 
