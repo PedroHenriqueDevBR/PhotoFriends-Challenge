@@ -25,6 +25,12 @@ export class GalleryComponent implements OnInit {
   @Output()
   emitClose = new EventEmitter();
 
+  @Output()
+  accept = new EventEmitter();
+
+  @Output()
+  reject = new EventEmitter();
+
   selectedImage: PhotoModel = new PhotoModel('');
 
   constructor() { }
@@ -39,12 +45,24 @@ export class GalleryComponent implements OnInit {
   removeSelectedImage(event: any): void {
     this.selectedImage = new PhotoModel('');
     this.bookId = 0;
-    this.emitChange();
+    if (event == true) {
+      this.hide = true;
+      this.emitChange(true);
+    }
   }
 
-  emitChange(): void {
-    this.hide = true;
-    this.emitClose.emit('');
+  emitChange(update: boolean): void {
+    this.emitClose.emit(update);
+  }
+
+  acceptImage(photo: PhotoModel): void {
+    console.log('accept galley');
+    this.accept.emit(photo);
+  }
+
+  rejectImage(photo: PhotoModel): void {
+    console.log('reject galley');
+    this.reject.emit(photo);
   }
   
 }

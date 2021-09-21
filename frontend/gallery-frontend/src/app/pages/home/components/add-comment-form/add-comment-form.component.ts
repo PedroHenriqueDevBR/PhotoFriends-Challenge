@@ -47,14 +47,15 @@ export class AddCommentFormComponent implements OnInit {
     this.metadataService.addComment(this.photo.id!, comment).subscribe(
       data => {
         this.toast.success('Comentário adicionado');
+        this.closeModal(true);
       },
       error => { },
     );
   }
 
-  closeModal(): void {
+  closeModal(update: boolean): void {
     this.hide = true;
-    this.emitClose.emit('');
+    this.emitClose.emit(update);
   }
 
 }

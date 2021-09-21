@@ -48,6 +48,7 @@ export class AddBookFormComponent implements OnInit {
     this.bookService.createBook(formData).subscribe(
       data => {
         this.toast.success('Galeria criada');
+        this.closeModal(true);
       },
       error => {}
     )
@@ -71,9 +72,9 @@ export class AddBookFormComponent implements OnInit {
     }
   }
 
-  closeModal(): void {
+  closeModal(update: boolean): void {
     this.hide = true;
-    this.emitClose.emit('');
+    this.emitClose.emit(update);
   }
 
 }

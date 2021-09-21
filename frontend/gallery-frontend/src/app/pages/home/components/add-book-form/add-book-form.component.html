@@ -4,7 +4,7 @@
             <div class="modal-header">
                 <h5 class="modal-title">Criar Galeria</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
-                    (click)="closeModal()"></button>
+                    (click)="closeModal(false)"></button>
             </div>
             <div class="modal-body">
 
@@ -28,7 +28,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-danger" data-bs-dismiss="modal"
-                    (click)="closeModal()">Cancelar</button>
+                    (click)="closeModal(false)">Cancelar</button>
                 <button type="button" class="btn btn-primary-color" (click)="onSubmit()">Criar</button>
             </div>
         </div>

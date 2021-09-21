@@ -3,7 +3,6 @@ import { ToastrService } from 'ngx-toastr';
 import { CommentModel } from 'src/app/shared/models/comment-model';
 import { PhotoModel } from 'src/app/shared/models/photo-model';
 import { MetadataImageService } from 'src/app/shared/services/metadata-image.service';
-import { PhotoService } from 'src/app/shared/services/photo.service';
 
 @Component({
   selector: 'app-show-image-container',
@@ -25,14 +24,20 @@ export class ShowImageContainerComponent implements OnInit {
 
   @Output()
   emitClose = new EventEmitter();
+
+  @Output()
+  emitAcept = new EventEmitter();
+
+  @Output()
+  emitReject = new EventEmitter();
   
   comments: CommentModel[] = [];
   hideCommentFormModal: boolean = true;
+  update: boolean = false;
 
   likes: number = 0;
 
   constructor(
-    private photoService: PhotoService,
     private toast: ToastrService,
     private metadataService: MetadataImageService,
   ) {
@@ -49,35 +54,10 @@ export class ShowImageContainerComponent implements OnInit {
 
   closeModal(): void {
     this.hide = true;
-    this.emitClose.emit('');
-  }
-
-  acceptImage() {
-    if (this.photo.acepted) {
-      this.toast.warning('A imagem já está disponível para visualizalção');
-      return;
-    }
-    this.photoService.acceptPhoto(this.bookId!, this.photo.id!).subscribe(
-      data => {
-        this.toast.success('Alteração realizada');
-        this.closeModal();
-      },
-      error => {}
-    );
-  }
-
-  rejectImage() {
-    if (!this.photo.acepted) {
-      this.toast.warning('A imagem já está oculta');
-      return;
-    }
-    this.photoService.rejectPhoto(this.bookId!, this.photo.id!).subscribe(
-      data => {
-        this.toast.success('Alteração realizada');
-        this.closeModal();
-      },
-      error => {}
-    );
+    this.photo = new PhotoModel('');
+    this.bookId = 0;
+    this.comments = [];
+    this.emitClose.emit(this.update);
   }
 
   addLike() {
@@ -113,9 +93,23 @@ export class ShowImageContainerComponent implements OnInit {
     this.hideCommentFormModal = false;
   }
 
-  closeCommentFormModal() {
+  closeCommentFormModal(event: any) {
+    if (event == true) {
+      this.getComments();
+    }
     this.hideCommentFormModal = true;
-    this.getComments();
+  }
+
+  acceptImage() {
+    console.log('accept show-image-container');
+    this.emitAcept.emit(this.photo);
+    this.closeModal();
+  }
+
+  rejectImage() {
+    console.log('reject show-image-container');
+    this.emitReject.emit(this.photo);
+    this.closeModal();
   }
 
 }

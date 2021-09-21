@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 import { BookModel } from 'src/app/shared/models/book-model';
 import { PhotoModel } from 'src/app/shared/models/photo-model';
 import { BookService } from 'src/app/shared/services/book.service';
+import { MetadataImageService } from 'src/app/shared/services/metadata-image.service';
+import { PhotoService } from 'src/app/shared/services/photo.service';
 
 @Component({
   selector: 'app-book',
@@ -18,7 +21,10 @@ export class BookComponent implements OnInit {
   pendingPhotos: PhotoModel[] = [];
 
   constructor(
+    private photoService: PhotoService,
+    private toast: ToastrService,
     private bookService: BookService,
+    private metadataService: MetadataImageService,
   ) { }
 
   ngOnInit(): void {
@@ -28,6 +34,7 @@ export class BookComponent implements OnInit {
   getBooks() {
     this.bookService.booksFromLoggedUser().subscribe(
       data => {
+        // console.table(data);
         data.forEach(book => {
           book.cover_image = '/server' + book.cover_image;
           book.photos.forEach(photo => {
@@ -38,11 +45,11 @@ export class BookComponent implements OnInit {
         this.books.push(...data);
       }
     );
+    console.table(this.pendingPhotos);
   }
 
   selectBook(book: BookModel) {
     this.selectedBook = book;
-    this.pendingPhotos = [];
     this.pendingPhotos = [];
     this.pendingPhotos.push(...book.photos.filter(el => el.acepted == false));
     this.aceptPhotos = [];
@@ -53,7 +60,10 @@ export class BookComponent implements OnInit {
     this.hideBookFormModal = false;
   }
 
-  closeBookFormModal(): void {
+  closeBookFormModal(event: any): void {
+    if (event == true) {
+      this.getBooks();
+    }
     this.hideBookFormModal = true;
   }
 
@@ -61,10 +71,68 @@ export class BookComponent implements OnInit {
     this.hidePhotoFormModal = false;
   }
 
-  closePhotoFormModal(): void {
-    this.hidePhotoFormModal = true;
-    this.getBooks();
+  async resetBookData(updatedID: number) {
     this.selectedBook = new BookModel();
+    this.getBooks();
+  }
+
+  closePhotoFormModal(event: any): void {
+    if (event == true) {
+      let updatedID = this.selectedBook.id!;
+      this.resetBookData(updatedID);
+    }
+    this.hidePhotoFormModal = true;
+  }
+
+  updatedImages(event: any) {
+    if (event == true) {
+      let updatedID = this.selectedBook.id!;
+      this.resetBookData(updatedID);
+    }
+  }
+
+  acceptImage(photo: PhotoModel | undefined) {
+    console.log('acceptImage');
+    if (photo != undefined) {
+      if (photo!.acepted) {
+        this.toast.warning('A imagem já está disponível para visualizalção');
+        return;
+      }
+      this.photoService.acceptPhoto(this.selectedBook.id!, photo.id!).subscribe(
+        data => {
+          this.toast.success('Alteração realizada');
+          let index = this.pendingPhotos.findIndex(el => el.id == photo.id);
+          if (index >= 0) {
+            photo.acepted = true;
+            this.pendingPhotos.splice(index, 1);
+            this.aceptPhotos.push(photo);
+          }
+        },
+        error => {}
+      );
+    }
+  }
+
+  rejectImage(photo: PhotoModel | undefined) {
+    console.log('rejectImage');
+    if (photo != undefined) {
+      if (!photo!.acepted) {
+        this.toast.warning('A imagem já está oculta');
+        return;
+      }
+      this.photoService.rejectPhoto(this.selectedBook.id!, photo.id!).subscribe(
+        data => {
+          this.toast.success('Alteração realizada');
+          let index = this.aceptPhotos.findIndex(el => el.id == photo.id);
+          if (index >= 0) {
+            photo.acepted = false;
+            this.aceptPhotos.splice(index, 1);
+            this.pendingPhotos.push(photo);
+          }
+        },
+        error => {}
+      );
+    }
   }
 
 }

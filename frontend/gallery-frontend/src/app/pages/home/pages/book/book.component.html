@@ -30,19 +30,34 @@
                 </button>
             </div>
             <div class="photo-container">
-                <app-gallery [bookId]="selectedBook.id" [images]="aceptPhotos" [hide]="false" [hideImages]="false"></app-gallery>
+                <app-gallery 
+                [bookId]="selectedBook.id" 
+                [images]="aceptPhotos" 
+                [hide]="false" 
+                [hideImages]="false" 
+                (accept)="acceptImage($event)"
+                (reject)="rejectImage($event)"
+                (emitClose)="updatedImages($event)"
+                ></app-gallery>
             </div>
 
             <div class="header p-3">
                 <p class="title">Pendentes de autorização</p>
             </div>
             <div class="photo-container">
-                <app-gallery (emitClose)="getBooks()" [bookId]="selectedBook.id!" [images]="pendingPhotos" [hide]="false" [hideImages]="false"></app-gallery>
+                <app-gallery 
+                [bookId]="selectedBook.id!" 
+                [images]="pendingPhotos" 
+                [hide]="false" 
+                [hideImages]="false"
+                (accept)="acceptImage($event)"
+                (reject)="rejectImage($event)"
+                (emitClose)="updatedImages($event)"></app-gallery>
             </div>
         </div>
     </div>
 
 </main>
 
-<app-add-book-form [hide]="hideBookFormModal" (emitClose)="closeBookFormModal()"></app-add-book-form>
-<app-add-photo-form [hide]="hidePhotoFormModal" (emitClose)="closePhotoFormModal()" [book]="selectedBook!"></app-add-photo-form>
+<app-add-book-form [hide]="hideBookFormModal" (emitClose)="closeBookFormModal($event)"></app-add-book-form>
+<app-add-photo-form [hide]="hidePhotoFormModal" (emitClose)="closePhotoFormModal($event)" [book]="selectedBook!"></app-add-photo-form>

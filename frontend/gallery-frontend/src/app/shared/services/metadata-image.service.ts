@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { CommentModel } from '../models/comment-model';
 import { LikeModel } from '../models/like-model';
+import { PhotoModel } from '../models/photo-model';
 
 @Injectable({
   providedIn: 'root'
@@ -24,6 +25,13 @@ export class MetadataImageService {
     return this.http.post(
       `${this.BASE_URL}photo/${photoId}/like/`,
       {},
+      { headers: this.getHeader() }
+    );
+  }
+
+  public getPhotosFromBook(bookID: number): Observable<PhotoModel[]> {
+    return this.http.get<PhotoModel[]>(
+      `${this.BASE_URL}${bookID}/photos`,
       { headers: this.getHeader() }
     );
   }

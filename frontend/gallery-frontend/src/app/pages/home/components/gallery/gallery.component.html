@@ -2,9 +2,17 @@
     <div class="images mt-3">
         <div *ngFor="let item of images" class="image-data"
             (click)="selectImage(item)"
-            style="background: url({{item.url}}); background-size: cover; width: 200px; height: 200px;"
+            style="background: url({{item.url}}); background-size: cover; background-position: center; width: 200px; height: 200px;"
             [ngClass]="{'hide-image': item.acepted == false && hideImages == true, 'pending': item.acepted == false}"></div>
     </div>
 </div>
 
-<app-show-image-container [bookId]="bookId" [showControls]="true" [hide]="selectedImage.id == null" (emitClose)="removeSelectedImage($event)" [photo]="selectedImage"></app-show-image-container>
+<app-show-image-container 
+[bookId]="bookId" 
+[showControls]="true" 
+[hide]="selectedImage.id == null" 
+(emitClose)="removeSelectedImage($event)" 
+(emitAcept)="acceptImage($event)" 
+(emitReject)="rejectImage($event)"
+[photo]="selectedImage"
+></app-show-image-container>

@@ -37,7 +37,7 @@ export class AddPhotoFormComponent implements OnInit {
       this.photoService.addPhoto(this.book.id!, formData).subscribe(
         data => {
           this.toast.success('Foto adicionada');
-          this.closeModal();
+          this.closeModal(true);
         },
         error => {}
       );
@@ -50,8 +50,8 @@ export class AddPhotoFormComponent implements OnInit {
     this.currentImage = event;
   }
 
-  closeModal(): void {
+  closeModal(update: boolean): void {
     this.hide = true;
-    this.emitClose.emit('');
+    this.emitClose.emit(update);
   }
 }
