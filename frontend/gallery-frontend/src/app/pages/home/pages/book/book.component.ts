@@ -16,8 +16,8 @@ export class BookComponent implements OnInit {
   showAccordion: boolean = false;
   hideBookFormModal: boolean = true;
   hidePhotoFormModal: boolean = true;
-  books: BookModel[] = [];
   selectedBook: BookModel = new BookModel();
+  books: BookModel[] = [];
   aceptPhotos: PhotoModel[] = [];
   pendingPhotos: PhotoModel[] = [];
 
@@ -32,38 +32,42 @@ export class BookComponent implements OnInit {
   }
 
   getBooks() {
+    this.books.length = 0;
     this.bookService.booksFromLoggedUser().subscribe(
       data => {
-        // console.table(data);
         data.forEach(book => {
           book.cover_image = environment.API + book.cover_image;
           book.photos.forEach(photo => {
             photo.url = environment.API + photo.url;
           });
         });
-        this.books = [];
         this.books.push(...data);
       }
     );
-    console.table(this.pendingPhotos);
   }
 
   selectBook(book: BookModel) {
-    this.selectedBook = book;
-    this.pendingPhotos = [];
-    this.pendingPhotos.push(...book.photos.filter(el => el.acepted == false));
-    this.aceptPhotos = [];
-    this.aceptPhotos.push(...book.photos.filter(el => el.acepted == true));
     this.showAccordion = false;
+    this.selectedBook = book;
+    this.pendingPhotos.length = 0;
+    this.aceptPhotos.length = 0;
+    this.pendingPhotos.push(...book.photos.filter(el => el.acepted == false));
+    this.aceptPhotos.push(...book.photos.filter(el => el.acepted == true));
   }
 
   openBookFormModal(): void {
     this.hideBookFormModal = false;
   }
 
-  closeBookFormModal(event: any): void {
-    if (event == true) {
-      this.getBooks();
+  updatedImages(event: any) {
+    if (event === true) {
+      this.resetBookData();
+    }
+  }
+
+  closeBookFormModal(event: any): void {  
+    if (event === true) {
+      this.resetBookData();
     }
     this.hideBookFormModal = true;
   }
@@ -72,23 +76,18 @@ export class BookComponent implements OnInit {
     this.hidePhotoFormModal = false;
   }
 
-  async resetBookData(updatedID: number) {
+  resetBookData() {
+    this.showAccordion = false;
     this.selectedBook = new BookModel();
+    this.books.length = 0;
+    this.pendingPhotos.length = 0;
+    this.aceptPhotos.length = 0;
     this.getBooks();
   }
 
   closePhotoFormModal(event: any): void {
-    if (event == true) {
-      let updatedID = this.selectedBook.id!;
-      // this.resetBookData(updatedID);
-    }
-    this.hidePhotoFormModal = true;
-  }
-
-  updatedImages(event: any) {
-    if (event == true) {
-      let updatedID = this.selectedBook.id!;
-      this.resetBookData(updatedID);
+    if (event === true) {
+      this.resetBookData();
     }
   }
 
@@ -101,9 +100,11 @@ export class BookComponent implements OnInit {
       this.photoService.acceptPhoto(this.selectedBook.id!, photo.id!).subscribe(
         data => {
           this.toast.success('Alteração realizada');
+          let generalIndex = this.selectedBook.photos.findIndex(el => el.id == photo.id);
           let index = this.pendingPhotos.findIndex(el => el.id == photo.id);
           if (index >= 0) {
             photo.acepted = true;
+            this.selectedBook.photos[generalIndex].acepted = true;
             this.pendingPhotos.splice(index, 1);
             this.aceptPhotos.push(photo);
           }
@@ -122,9 +123,11 @@ export class BookComponent implements OnInit {
       this.photoService.rejectPhoto(this.selectedBook.id!, photo.id!).subscribe(
         data => {
           this.toast.success('Alteração realizada');
+          let generalIndex = this.selectedBook.photos.findIndex(el => el.id == photo.id);
           let index = this.aceptPhotos.findIndex(el => el.id == photo.id);
-          if (index >= 0) {
+          if (index != -1) {
             photo.acepted = false;
+            this.selectedBook.photos[generalIndex].acepted = false;
             this.aceptPhotos.splice(index, 1);
             this.pendingPhotos.push(photo);
           }
@@ -139,14 +142,15 @@ export class BookComponent implements OnInit {
       this.photoService.deletePhoto(photo.id!).subscribe(
         data => {
           this.toast.success('Imagem deletada');
+          let generalIndex = this.selectedBook.photos.findIndex(el => el.id == photo.id);
           let acceptedIndex = this.aceptPhotos.findIndex(el => el.id == photo.id);
           let pedingIndex = this.pendingPhotos.findIndex(el => el.id == photo.id);
-          if (acceptedIndex >= 0) {
+          if (acceptedIndex != -1) {
             this.aceptPhotos.splice(acceptedIndex, 1);
+          } else if (pedingIndex != -1) {
+            this.pendingPhotos.splice(pedingIndex, 1);
           }
-          if (pedingIndex >= 0) {
-            this.aceptPhotos.splice(pedingIndex, 1);
-          }
+          this.selectedBook.photos.splice(generalIndex, 1);
         },
         error => {}
       );
