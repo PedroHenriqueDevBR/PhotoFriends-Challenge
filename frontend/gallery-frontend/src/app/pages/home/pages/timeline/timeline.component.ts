@@ -10,6 +10,8 @@ import { BookService } from 'src/app/shared/services/book.service';
 export class TimelineComponent implements OnInit {
 
   books: BookModel[] = [];
+  selectedBook: BookModel = new BookModel();
+  hidePhotoFormModal: boolean = true;
 
   constructor(
     private bookService: BookService,
@@ -24,11 +26,33 @@ export class TimelineComponent implements OnInit {
       data => {
         data.forEach(el => {
           el.cover_image = '/server' + el.cover_image;
+          for (let photo of el.photos) {
+            photo.url = '/server' + photo.url;
+          }
         });
         this.books.push(...data);
       },
       error => {}
     );
+  }
+
+  selectBook(book: BookModel): void {
+    console.log('selectBook');
+    if (this.selectedBook.id == book.id) {
+      console.log('selectBook pt-2');
+      this.selectedBook = new BookModel();
+      return;
+    }
+    this.selectedBook = book;
+  }
+
+  openPhotoFormModal(): void {
+    this.hidePhotoFormModal = false;
+  }
+
+  closePhotoFormModal(): void {
+    this.hidePhotoFormModal = true;
+    this.selectedBook = new BookModel();
   }
 
 }

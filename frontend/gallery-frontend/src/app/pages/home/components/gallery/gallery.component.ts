@@ -22,6 +22,9 @@ export class GalleryComponent implements OnInit {
   @Input()
   hideImages: boolean = true;
 
+  @Input()
+  showControls: boolean = false;
+
   @Output()
   emitClose = new EventEmitter();
 

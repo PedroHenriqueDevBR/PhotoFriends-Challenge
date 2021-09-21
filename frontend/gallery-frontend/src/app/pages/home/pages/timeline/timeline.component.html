@@ -2,14 +2,33 @@
     <div class="timeline-container">
         <div class="timeline-list">
             <app-person-request-list class="show-mobile-only"></app-person-request-list>
-            <app-book-item *ngFor="let item of books" [book]="item"></app-book-item>
+
+            <app-book-item *ngFor="let item of books" [book]="item" (click)="selectBook(item)"
+                [hide]="selectedBook.id != null && selectedBook.id != item.id"></app-book-item>
+
             <p class="subtitle card p-5 mt-1" style="width: max-content;" [ngClass]="{'hide': books.length > 0}">
                 Nenhum dado para ser apresentado.
             </p>
+
+            <div class="info p-2">
+                <div class="gallery p-4" [ngClass]="{'hide': selectedBook.id == null}">
+                    <div class="header p-3">
+                        <p class="title">Galeria de fotos</p>
+                        <button class="btn btn-primary-color" (click)="openPhotoFormModal()">
+                            <i class="fas fa-plus"></i> Foto
+                        </button>
+                    </div>
+                </div>
+                <app-gallery [images]="selectedBook.photos" [hide]="selectedBook.id == null" [showControls]="false"></app-gallery>
+            </div>
         </div>
+
     </div>
     <div class="requests hide-mobile-only">
         <app-person-request-list></app-person-request-list>
     </div>
 
 </main>
+
+<app-add-photo-form [hide]="hidePhotoFormModal" (emitClose)="closePhotoFormModal()" [book]="selectedBook!">
+</app-add-photo-form>

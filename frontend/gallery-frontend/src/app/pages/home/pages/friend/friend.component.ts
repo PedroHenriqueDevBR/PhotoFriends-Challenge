@@ -13,6 +13,8 @@ import { SpouseService } from 'src/app/shared/services/spouse.service';
   styleUrls: ['./friend.component.css']
 })
 export class FriendComponent implements OnInit {
+
+  showAccordion: boolean = false;
   friends: PersonModel[] = [];
   selectedFriend: PersonModel = new PersonModel();
   selectedBook: BookModel = new BookModel();
@@ -54,6 +56,7 @@ export class FriendComponent implements OnInit {
     this.selectedFriend = person;
     this.getBooks(person);
     this.selectedBook = new BookModel();
+    this.showAccordion = false;
   }
 
   getBooks(friend: PersonModel): void {

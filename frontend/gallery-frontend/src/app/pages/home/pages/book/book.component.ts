@@ -3,7 +3,6 @@ import { ToastrService } from 'ngx-toastr';
 import { BookModel } from 'src/app/shared/models/book-model';
 import { PhotoModel } from 'src/app/shared/models/photo-model';
 import { BookService } from 'src/app/shared/services/book.service';
-import { MetadataImageService } from 'src/app/shared/services/metadata-image.service';
 import { PhotoService } from 'src/app/shared/services/photo.service';
 
 @Component({
@@ -13,6 +12,7 @@ import { PhotoService } from 'src/app/shared/services/photo.service';
 })
 export class BookComponent implements OnInit {
 
+  showAccordion: boolean = false;
   hideBookFormModal: boolean = true;
   hidePhotoFormModal: boolean = true;
   books: BookModel[] = [];
@@ -24,7 +24,6 @@ export class BookComponent implements OnInit {
     private photoService: PhotoService,
     private toast: ToastrService,
     private bookService: BookService,
-    private metadataService: MetadataImageService,
   ) { }
 
   ngOnInit(): void {
@@ -54,6 +53,7 @@ export class BookComponent implements OnInit {
     this.pendingPhotos.push(...book.photos.filter(el => el.acepted == false));
     this.aceptPhotos = [];
     this.aceptPhotos.push(...book.photos.filter(el => el.acepted == true));
+    this.showAccordion = false;
   }
 
   openBookFormModal(): void {

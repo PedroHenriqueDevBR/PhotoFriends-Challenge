@@ -14,6 +14,8 @@
     margin: 5px;
     border-radius: 8px;
     cursor: pointer;
+    width: 200px;
+    height: 200px;
 }
 
 .hide {
@@ -56,4 +58,14 @@
 
 .hide-image {
     display: none;
+}
+
+@media only screen and (max-width: 950px) {
+    .gallery .images .image-data {
+        margin: 5px;
+        border-radius: 8px;
+        cursor: pointer;
+        width: 150px;
+        height: 150px;
+    }
 }

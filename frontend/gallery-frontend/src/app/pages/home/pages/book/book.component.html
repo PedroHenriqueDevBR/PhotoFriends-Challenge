@@ -1,5 +1,61 @@
 <main>
-    <div class="my-books">
+    <div class="accordion show-mobile-only" id="accordionRequests">
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingTwo">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo" 
+                    [ngClass]="{'collapsed': !showAccordion}"
+                    (click)="showAccordion = true">
+                    Minhas galerias
+                </button>
+            </h2>
+            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                data-bs-parent="#accordionExample" [ngClass]="{'show': showAccordion}">
+                <div class="accordion-body">
+                    <div class="header p-4">
+                        <p class="subtitle">Minhas galerias</p>
+                        <button class="btn btn-primary-color" (click)="openBookFormModal()">
+                            <i class="fas fa-plus"></i>
+                        </button>
+                    </div>
+                    <app-book-item *ngFor="let item of books" [book]="item" (click)="selectBook(item)"></app-book-item>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="selected-book card">
+        <div class="cover-image"
+            style="background-image: url({{selectedBook.cover_image}}); background-size: cover; background-repeat: no-repeat; width: 100%; border-top-right-radius: 8px;">
+        </div>
+        <div class="container p-4">
+            <h1 class="title">{{ selectedBook.title }}</h1>
+            <p class="subtitle">{{ selectedBook.description }}</p>
+        </div>
+        <div class="gallery p-4" [ngClass]="{'hide': selectedBook.id == null}">
+            <div class="header p-3">
+                <p class="title">Galeria de fotos</p>
+                <button class="btn btn-primary-color" (click)="openPhotoFormModal()">
+                    <i class="fas fa-plus"></i> Foto
+                </button>
+            </div>
+            <div class="photo-container">
+                <app-gallery [bookId]="selectedBook.id" [images]="aceptPhotos" [hide]="false" [hideImages]="false"
+                    [showControls]="true" (accept)="acceptImage($event)" (reject)="rejectImage($event)"
+                    (emitClose)="updatedImages($event)"></app-gallery>
+            </div>
+            <div class="header p-3">
+                <p class="title">Pendentes de autorização</p>
+            </div>
+            <div class="photo-container">
+                <app-gallery [bookId]="selectedBook.id!" [images]="pendingPhotos" [hide]="false" [hideImages]="false"
+                    [showControls]="true" (accept)="acceptImage($event)" (reject)="rejectImage($event)"
+                    (emitClose)="updatedImages($event)"></app-gallery>
+            </div>
+        </div>
+    </div>
+
+    <div class="my-books hide-mobile-only">
         <div class="header p-4">
             <p class="title">Minhas galerias</p>
             <button class="btn btn-primary-color" (click)="openBookFormModal()">
@@ -12,52 +68,8 @@
         </div>
     </div>
 
-    <div class="selected-book card">
-        <div class="cover-image" style="background-image: url({{selectedBook.cover_image}}); background-size: cover; background-repeat: no-repeat; width: 100%; border-top-right-radius: 8px;">
-
-        </div>
-
-        <div class="container p-4">
-            <h1 class="title">{{ selectedBook.title }}</h1>
-            <p class="subtitle">{{ selectedBook.description }}</p>
-        </div>
-
-        <div class="gallery p-4" [ngClass]="{'hide': selectedBook.id == null}">            
-            <div class="header p-3">
-                <p class="title">Galeria de fotos</p>
-                <button class="btn btn-primary-color" (click)="openPhotoFormModal()">
-                    <i class="fas fa-plus"></i> Foto
-                </button>
-            </div>
-            <div class="photo-container">
-                <app-gallery 
-                [bookId]="selectedBook.id" 
-                [images]="aceptPhotos" 
-                [hide]="false" 
-                [hideImages]="false" 
-                (accept)="acceptImage($event)"
-                (reject)="rejectImage($event)"
-                (emitClose)="updatedImages($event)"
-                ></app-gallery>
-            </div>
-
-            <div class="header p-3">
-                <p class="title">Pendentes de autorização</p>
-            </div>
-            <div class="photo-container">
-                <app-gallery 
-                [bookId]="selectedBook.id!" 
-                [images]="pendingPhotos" 
-                [hide]="false" 
-                [hideImages]="false"
-                (accept)="acceptImage($event)"
-                (reject)="rejectImage($event)"
-                (emitClose)="updatedImages($event)"></app-gallery>
-            </div>
-        </div>
-    </div>
-
 </main>
 
 <app-add-book-form [hide]="hideBookFormModal" (emitClose)="closeBookFormModal($event)"></app-add-book-form>
-<app-add-photo-form [hide]="hidePhotoFormModal" (emitClose)="closePhotoFormModal($event)" [book]="selectedBook!"></app-add-photo-form>
+<app-add-photo-form [hide]="hidePhotoFormModal" (emitClose)="closePhotoFormModal($event)" [book]="selectedBook!">
+</app-add-photo-form>

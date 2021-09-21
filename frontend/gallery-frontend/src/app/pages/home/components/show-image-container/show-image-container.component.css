@@ -8,6 +8,7 @@
     justify-content: center;
     align-items: center;
     background: #0009;
+    z-index: 100;
 }
 
 .components {
@@ -24,6 +25,8 @@
 }
 
 .img-data .header {
+    display: flex;
+    justify-content: flex-end;
     background: #fff;
     padding: 0;
     width: 100%;
@@ -89,4 +92,12 @@
 
 .hide {
     display: none;
+}
+
+@media only screen and (max-width: 950px) {
+    .components {
+        border-radius: 0;
+        max-height: 100vh;
+    }
+    
 }

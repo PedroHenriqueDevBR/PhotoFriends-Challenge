@@ -17,12 +17,24 @@ main {
     width: 100%;
 }
 
-.hide {
-    display: none;
-}
-
 .requests {
     width: 400px;
+}
+
+.info {
+    width: 100%;
+    background-color: #fff;
+}
+
+.gallery .header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.gallery .header * {
+    margin: auto 0;
 }
 
 @media only screen and (min-width: 950px) {
@@ -39,4 +51,8 @@ main {
     .hide-mobile-only {
         display: none;
     }
+}
+
+.hide {
+    display: none;
 }

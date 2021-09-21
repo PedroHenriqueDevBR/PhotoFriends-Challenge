@@ -25,6 +25,35 @@ main {
 }
 
 .cover-image {
-    min-height: 200px;
-    height: 300px;
+    min-height: 300px;
+    height: 400px;
+}
+
+@media only screen and (max-width: 950px) {
+    main {
+        flex-direction: column;
+        overflow-y: auto;
+    }
+
+    .selected-book {
+        width: 100%;
+        height: 100%;
+        overflow-y: auto;
+    }
+}
+
+@media only screen and (min-width: 950px) {
+    .show-mobile-only {
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 950px) {
+    .timeline-list {
+        padding: 16px;
+    }
+
+    .hide-mobile-only {
+        display: none;
+    }
 }

@@ -9,7 +9,7 @@
             <div class="body">
                 <img src="{{photo.url}}" alt="show">
             </div>
-            <div class="footer py-4">
+            <div class="footer py-4" [ngClass]="{'hide': !showControls}">
                 <button type="button" (click)="rejectImage()" class="btn"
                     [ngClass]="{'hide': showControls==false}">Ocultar imagem</button>
                 <button type="button" (click)="acceptImage()" class="btn"

@@ -5,6 +5,7 @@
     width: 100vw;
     height: 100vh;
     background-color: #0008;
+    z-index: 200;
 }
 
 .hide {
